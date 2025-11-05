@@ -1,0 +1,85 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+  <div class="nav-container">
+    <a href="/" class="logo">No Esta Facil</a>
+    <ul class="nav-links">
+      <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+      <li><a href="/ai-engineering" class={currentPath.startsWith('/ai-engineering') ? 'active' : ''}>AI Engineering</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .logo:hover {
+    color: #3b82f6;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-links a:hover {
+    color: #111827;
+  }
+
+  .nav-links a.active {
+    color: #3b82f6;
+    border-bottom-color: #3b82f6;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-container {
+      padding: 1rem;
+    }
+
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+    }
+  }
+</style>
