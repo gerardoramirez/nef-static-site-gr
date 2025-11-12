@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>5. How Mutual TLS Works</h1>
+      </header>
+
+      <div class="chapter-content">
+        <p>Mutual TLS authentication occurs during the TLS handshake, where both parties present and verify certificates before establishing an encrypted connection.</p>
+
+        <h2>The mTLS Handshake Process</h2>
+
+        <h3>Step 1: Client Hello</h3>
+        <p>The client initiates the connection and sends supported TLS versions, cipher suites, and random data to the server.</p>
+
+        <h3>Step 2: Server Hello and Certificate</h3>
+        <p>The server responds with its chosen TLS version and cipher suite, then presents its certificate chain. The client verifies the server certificate against its trust store.</p>
+
+        <h3>Step 3: Certificate Request (mTLS-specific)</h3>
+        <p>The server sends a Certificate Request message, indicating it requires client authentication. This message includes a list of trusted Certificate Authority distinguished names that the server accepts.</p>
+
+        <h3>Step 4: Client Certificate</h3>
+        <p>The client responds with its own certificate (and any necessary intermediate certificates) that chains to one of the CAs listed in the server's Certificate Request.</p>
+
+        <h3>Step 5: Certificate Verify</h3>
+        <p>The server verifies the client certificate's signature, validity period, revocation status, and that it chains to a trusted CA. The client must also prove possession of the private key.</p>
+
+        <h3>Step 6: Key Exchange and Encrypted Communication</h3>
+        <p>Once both parties are authenticated, they complete the key exchange and establish an encrypted channel for secure communication.</p>
+
+        <h2>Authentication vs Authorization</h2>
+        <p>It's crucial to understand that mTLS provides <strong>authentication</strong> (verifying identity) but not <strong>authorization</strong> (granting access). After mTLS authentication succeeds, your application must implement access control to determine what resources the authenticated client can access.</p>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Public Key Cryptography Fundamentals",
+          href: "/security/cryptography-fundamentals"
+        }}
+        next={{
+          title: "Public PKI vs Private PKI",
+          href: "/security/public-vs-private-pki"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

@@ -1,0 +1,112 @@
+---
+interface Props {
+  previous?: {
+    title: string;
+    href: string;
+  };
+  next?: {
+    title: string;
+    href: string;
+  };
+}
+
+const { previous, next } = Astro.props;
+---
+
+<div class="chapter-nav">
+  <div class="nav-links">
+    {previous && (
+      <a href={previous.href} class="nav-link prev">
+        <span class="nav-label">Previous</span>
+        <span class="nav-title">{previous.title}</span>
+      </a>
+    )}
+    {next && (
+      <a href={next.href} class="nav-link next">
+        <span class="nav-label">Next</span>
+        <span class="nav-title">{next.title}</span>
+      </a>
+    )}
+  </div>
+  <div class="back-link">
+    <a href="/security">← Back to mTLS Crash Course</a>
+  </div>
+</div>
+
+<style>
+  .chapter-nav {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: white;
+  }
+
+  .nav-link:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .nav-link.prev {
+    text-align: left;
+  }
+
+  .nav-link.next {
+    text-align: right;
+  }
+
+  .nav-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+  }
+
+  .nav-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .back-link {
+    text-align: center;
+  }
+
+  .back-link a {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .back-link a:hover {
+    color: #3b82f6;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      grid-template-columns: 1fr;
+    }
+
+    .nav-link.next {
+      text-align: left;
+    }
+  }
+</style>
+

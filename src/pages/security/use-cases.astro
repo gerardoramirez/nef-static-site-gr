@@ -1,0 +1,123 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>7. mTLS Use Cases and Applications</h1>
+      </header>
+
+      <div class="chapter-content">
+        <h2>Enterprise Applications</h2>
+        <ul>
+          <li><strong>API Security:</strong> Authenticate machine-to-machine communications between microservices</li>
+          <li><strong>Zero Trust Architecture:</strong> Verify every connection regardless of network location</li>
+          <li><strong>Service Mesh:</strong> Secure service-to-service communication in Kubernetes (e.g., Istio, Linkerd)</li>
+          <li><strong>VPN Access:</strong> Authenticate remote users and devices</li>
+        </ul>
+
+        <h2>IoT and Device Management</h2>
+        <ul>
+          <li><strong>Device Authentication:</strong> Verify IoT devices connecting to cloud services</li>
+          <li><strong>Manufacturing:</strong> Embed certificates during device production for supply chain security</li>
+          <li><strong>Over-the-Air Updates:</strong> Ensure only authorized devices receive firmware updates</li>
+        </ul>
+
+        <h2>Financial Services and Compliance</h2>
+        <ul>
+          <li><strong>Banking APIs:</strong> Secure payment processing and account access</li>
+          <li><strong>Regulatory Compliance:</strong> Meet requirements for PCI DSS, SOC 2, and other standards</li>
+          <li><strong>Trading Systems:</strong> Authenticate high-value transactions</li>
+        </ul>
+
+        <h2>Government and Healthcare</h2>
+        <ul>
+          <li><strong>HIPAA Compliance:</strong> Protect patient health information</li>
+          <li><strong>Government Systems:</strong> Secure classified and sensitive government communications</li>
+          <li><strong>Electronic Identity:</strong> Digital IDs for citizens and government employees</li>
+        </ul>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Public PKI vs Private PKI",
+          href: "/security/public-vs-private-pki"
+        }}
+        next={{
+          title: "Security Best Practices",
+          href: "/security/best-practices"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

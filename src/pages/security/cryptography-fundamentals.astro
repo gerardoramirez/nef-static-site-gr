@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>4. Public Key Cryptography Fundamentals</h1>
+      </header>
+
+      <div class="chapter-content">
+        <p>X.509 certificates rely on asymmetric cryptography, which uses mathematically related key pairs: a public key and a private key.</p>
+
+        <h2>How Key Pairs Work</h2>
+        <ul>
+          <li><strong>Public Key:</strong> Shared openly, used to encrypt data or verify signatures</li>
+          <li><strong>Private Key:</strong> Kept secret, used to decrypt data or create signatures</li>
+          <li><strong>Mathematical Relationship:</strong> The keys are mathematically related, but deriving the private key from the public key is computationally infeasible</li>
+        </ul>
+
+        <h2>Common Algorithms</h2>
+        <ul>
+          <li><strong>RSA:</strong> Most widely used, key sizes typically 2048 or 4096 bits</li>
+          <li><strong>ECDSA:</strong> Elliptic Curve Digital Signature Algorithm, smaller keys with equivalent security</li>
+          <li><strong>Ed25519:</strong> Modern elliptic curve algorithm, increasingly popular</li>
+        </ul>
+
+        <h2>Encryption vs Signing</h2>
+
+        <h3>Encryption (Confidentiality)</h3>
+        <p>Data encrypted with the public key can only be decrypted with the private key. This ensures only the intended recipient can read the message.</p>
+
+        <h3>Digital Signatures (Authenticity and Integrity)</h3>
+        <p>Data signed with the private key can be verified with the public key. This proves the message came from the holder of the private key and hasn't been tampered with.</p>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Certificate Authorities and PKI",
+          href: "/security/certificate-authorities"
+        }}
+        next={{
+          title: "How Mutual TLS Works",
+          href: "/security/mtls-handshake"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

@@ -1,0 +1,140 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>9. Common Issues and Troubleshooting</h1>
+      </header>
+
+      <div class="chapter-content">
+        <h2>Certificate Chain Issues</h2>
+
+        <h3>Problem: Incomplete certificate chain</h3>
+        <p><strong>Solution:</strong> Ensure all intermediate certificates are included in the certificate bundle. The chain should go from end-entity certificate through all intermediates to a root CA.</p>
+
+        <h3>Problem: Untrusted root CA</h3>
+        <p><strong>Solution:</strong> For private PKI, ensure client trust stores include your root CA certificate. For public PKI, verify you're using a publicly trusted CA.</p>
+
+        <h2>Certificate Validation Errors</h2>
+
+        <h3>Problem: Certificate expired</h3>
+        <p><strong>Solution:</strong> Renew certificates before expiration. Implement automated renewal and monitoring.</p>
+
+        <h3>Problem: Hostname mismatch</h3>
+        <p><strong>Solution:</strong> Ensure the certificate's Common Name (CN) or Subject Alternative Names (SANs) match the hostname being accessed. Use wildcard certificates for multiple subdomains.</p>
+
+        <h3>Problem: Certificate revoked</h3>
+        <p><strong>Solution:</strong> Investigate why the certificate was revoked, issue a new certificate, and update systems.</p>
+
+        <h2>mTLS-Specific Issues</h2>
+
+        <h3>Problem: Client certificate not sent</h3>
+        <p><strong>Solution:</strong> Verify the client has the certificate and private key properly configured. Ensure the certificate chains to a CA trusted by the server.</p>
+
+        <h3>Problem: Server rejects client certificate</h3>
+        <p><strong>Solution:</strong> Check that the client certificate was issued by a CA the server trusts. Verify the certificate's EKU includes Client Authentication.</p>
+
+        <h2>Performance Considerations</h2>
+        <ul>
+          <li><strong>Session Resumption:</strong> Enable TLS session resumption to reduce handshake overhead</li>
+          <li><strong>OCSP Stapling:</strong> Use OCSP stapling to avoid client-side revocation checks</li>
+          <li><strong>Hardware Acceleration:</strong> Use hardware acceleration for cryptographic operations</li>
+          <li><strong>Certificate Size:</strong> Keep certificate chains as short as possible</li>
+        </ul>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Security Best Practices",
+          href: "/security/best-practices"
+        }}
+        next={{
+          title: "Conclusion and Next Steps",
+          href: "/security/conclusion"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
