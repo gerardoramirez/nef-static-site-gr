@@ -7,5 +7,5 @@ export default defineConfig({
   // Base path for GitHub Pages deployment
   // For local dev: comment out or set to '/'
   // For production: uncomment and set to '/nef-static-site-gr'
- base: '/nef-static-site-gr',
+ base: '/nef-static-site-gr/',
 });
