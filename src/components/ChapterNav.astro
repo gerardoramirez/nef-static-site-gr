@@ -11,25 +11,31 @@ interface Props {
 }
 
 const { previous, next } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+// Helper function to normalize href (remove leading slash if present)
+const normalizeHref = (href: string) => {
+  return href.startsWith('/') ? href.slice(1) : href;
+};
 ---
 
 <div class="chapter-nav">
   <div class="nav-links">
     {previous && (
-      <a href={previous.href} class="nav-link prev">
+      <a href={`${baseUrl}${normalizeHref(previous.href)}`} class="nav-link prev">
         <span class="nav-label">Previous</span>
         <span class="nav-title">{previous.title}</span>
       </a>
     )}
     {next && (
-      <a href={next.href} class="nav-link next">
+      <a href={`${baseUrl}${normalizeHref(next.href)}`} class="nav-link next">
         <span class="nav-label">Next</span>
         <span class="nav-title">{next.title}</span>
       </a>
     )}
   </div>
   <div class="back-link">
-    <a href="/security">← Back to mTLS Crash Course</a>
+    <a href={`${baseUrl}security`}>← Back to mTLS Crash Course</a>
   </div>
 </div>
 
