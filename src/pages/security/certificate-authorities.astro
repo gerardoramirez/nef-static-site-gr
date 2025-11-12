@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>3. Certificate Authorities and Public Key Infrastructure</h1>
+      </header>
+
+      <div class="chapter-content">
+        <h2>What is a Certificate Authority (CA)?</h2>
+        <p>A Certificate Authority is a trusted third-party organization authorized to issue digital certificates. CAs verify the identity of entities requesting certificates and digitally sign those certificates to establish trust. Major public CAs include DigiCert, Let's Encrypt, GlobalSign, and Sectigo.</p>
+
+        <h3>CA Responsibilities</h3>
+        <ul>
+          <li><strong>Identity Verification:</strong> Validating the identity of certificate applicants</li>
+          <li><strong>Certificate Issuance:</strong> Signing and issuing certificates after verification</li>
+          <li><strong>Certificate Revocation:</strong> Maintaining Certificate Revocation Lists (CRLs) and OCSP responders</li>
+          <li><strong>Compliance:</strong> Following CA/Browser Forum Baseline Requirements and undergoing annual audits</li>
+        </ul>
+
+        <h2>Certificate Hierarchy and Chain of Trust</h2>
+        <p>Certificates exist in a hierarchical structure that forms a chain of trust:</p>
+        <ul>
+          <li><strong>Root CA Certificate:</strong> Self-signed certificate at the top of the hierarchy, embedded in operating systems and browsers</li>
+          <li><strong>Intermediate CA Certificate:</strong> Signed by the root CA, used to issue end-entity certificates while protecting the root</li>
+          <li><strong>End-Entity (Leaf) Certificate:</strong> The certificate issued to a specific server, client, or individual</li>
+        </ul>
+        <p>When a client verifies a certificate, it follows the chain from the end-entity certificate up through intermediate CAs to a trusted root CA in its trust store.</p>
+
+        <h2>Certificate Validation Levels</h2>
+        <ul>
+          <li><strong>Domain Validated (DV):</strong> Verifies domain ownership only, issued quickly</li>
+          <li><strong>Organization Validated (OV):</strong> Verifies domain and organization identity, standard for commercial websites</li>
+          <li><strong>Extended Validation (EV):</strong> Highest verification level, used by financial institutions and government agencies</li>
+        </ul>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Understanding X.509 Certificates",
+          href: "/security/x509-certificates"
+        }}
+        next={{
+          title: "Public Key Cryptography Fundamentals",
+          href: "/security/cryptography-fundamentals"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

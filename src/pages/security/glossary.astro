@@ -1,0 +1,165 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>Glossary of Terms</h1>
+      </header>
+
+      <div class="chapter-content">
+        <div class="glossary">
+          <div class="glossary-item">
+            <h2>ASN.1 (Abstract Syntax Notation One)</h2>
+            <p>A standard notation used to describe data structures for certificates and other PKI components.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>CA/Browser Forum</h2>
+            <p>A consortium of Certificate Authorities and browser vendors that establishes Baseline Requirements for certificate issuance.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>Certificate Revocation List (CRL)</h2>
+            <p>A list of certificates that have been revoked before their scheduled expiration date.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>Certificate Signing Request (CSR)</h2>
+            <p>A message sent to a CA to request a digital certificate, containing the public key and identity information.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>DER (Distinguished Encoding Rules)</h2>
+            <p>Binary format for encoding certificates and keys, commonly used for certificate files.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>Distinguished Name (DN)</h2>
+            <p>A structured name that uniquely identifies an entity in an X.509 certificate, including fields like Common Name (CN), Organization (O), and Country (C).</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>OCSP (Online Certificate Status Protocol)</h2>
+            <p>A protocol for obtaining the revocation status of a certificate in real-time, more efficient than CRLs.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>PEM (Privacy Enhanced Mail)</h2>
+            <p>Base64-encoded format for certificates and keys, commonly used in text-based configurations.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>PKCS (Public-Key Cryptography Standards)</h2>
+            <p>A series of standards for public key cryptography, including PKCS#12 (.p12/.pfx files) for storing certificates and private keys.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>Root Store</h2>
+            <p>A collection of trusted root CA certificates embedded in operating systems and browsers.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>SAN (Subject Alternative Name)</h2>
+            <p>An X.509 extension that allows a certificate to specify additional hostnames, IP addresses, or identities.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>TLS Handshake</h2>
+            <p>The process by which a client and server establish a secure connection, including protocol negotiation, authentication, and key exchange.</p>
+          </div>
+
+          <div class="glossary-item">
+            <h2>WebTrust</h2>
+            <p>An audit framework used to verify that Certificate Authorities follow industry standards and best practices.</p>
+          </div>
+        </div>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Conclusion and Next Steps",
+          href: "/security/conclusion"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .glossary {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .glossary-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .glossary-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .glossary-item h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 0.75rem;
+  }
+
+  .glossary-item p {
+    font-size: 1.125rem;
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .glossary-item h2 {
+      font-size: 1.25rem;
+    }
+
+    .glossary-item p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

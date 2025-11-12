@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>2. Understanding X.509 Certificates</h1>
+      </header>
+
+      <div class="chapter-content">
+        <p>X.509 is an International Telecommunication Union (ITU) standard that defines the format of digital certificates. First introduced in 1988, X.509 certificates are the foundation of modern public key infrastructure (PKI) and are used in TLS/SSL, email encryption, code signing, and many other security protocols.</p>
+
+        <h2>What is an X.509 Certificate?</h2>
+        <p>An X.509 certificate is a digital document that binds an identity (such as a website, organization, or individual) to a public key using a digital signature. It enables secure, authenticated communications by providing cryptographic proof of identity.</p>
+
+        <h2>Key Components of an X.509 Certificate</h2>
+        <ul>
+          <li><strong>Version:</strong> Indicates the X.509 version (v1, v2, or v3)</li>
+          <li><strong>Serial Number:</strong> Unique identifier issued by the Certificate Authority</li>
+          <li><strong>Subject:</strong> The entity the certificate represents (domain name, organization, individual)</li>
+          <li><strong>Issuer:</strong> The Certificate Authority that signed and issued the certificate</li>
+          <li><strong>Public Key:</strong> The public cryptographic key used for encryption and signature verification</li>
+          <li><strong>Validity Period:</strong> Start and end dates defining when the certificate is valid</li>
+          <li><strong>Signature Algorithm:</strong> The cryptographic algorithm used to sign the certificate</li>
+          <li><strong>Digital Signature:</strong> The CA's signature proving authenticity</li>
+          <li><strong>Extensions:</strong> Additional attributes like Extended Key Usage (EKU), Subject Alternative Names (SAN)</li>
+        </ul>
+
+        <h2>Extended Key Usage (EKU)</h2>
+        <p>The Extended Key Usage extension defines the specific purposes for which a certificate can be used. Common EKU values include:</p>
+        <ul>
+          <li><strong>Server Authentication (1.3.6.1.5.5.7.3.1):</strong> For TLS server certificates</li>
+          <li><strong>Client Authentication (1.3.6.1.5.5.7.3.2):</strong> For mTLS client certificates</li>
+          <li><strong>Code Signing (1.3.6.1.5.5.7.3.3):</strong> For signing software and code</li>
+        </ul>
+
+        <div class="warning">
+          <strong>Important:</strong> As of 2025, major browsers and certificate authorities are deprecating dual-EKU certificates (those with both server and client authentication). This change significantly impacts mTLS implementations using public certificates.
+        </div>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "Introduction to TLS and mTLS",
+          href: "/security/introduction"
+        }}
+        next={{
+          title: "Certificate Authorities and PKI",
+          href: "/security/certificate-authorities"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  .warning {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+
+  .warning strong {
+    color: #92400e;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

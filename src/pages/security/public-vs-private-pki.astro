@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>6. Public PKI vs Private PKI</h1>
+      </header>
+
+      <div class="chapter-content">
+        <h2>Public PKI</h2>
+        <p>Public PKI refers to certificates issued by publicly trusted Certificate Authorities that are recognized by web browsers, operating systems, and other platforms. These certificates are used for public-facing services like websites.</p>
+
+        <h3>Characteristics</h3>
+        <ul>
+          <li>Universally trusted by browsers and devices</li>
+          <li>Governed by CA/Browser Forum Baseline Requirements</li>
+          <li>Subject to strict validation and audit requirements</li>
+          <li>Certificate validity periods limited (currently 397 days for TLS, reducing to 47 days by 2029)</li>
+          <li>All issuances logged in Certificate Transparency logs</li>
+        </ul>
+
+        <h2>Private PKI</h2>
+        <p>Private PKI uses an internal Certificate Authority to issue certificates for use within an organization's network. These certificates are not trusted by external browsers or systems unless explicitly configured.</p>
+
+        <h3>Characteristics</h3>
+        <ul>
+          <li>Complete control over certificate policies and validity periods</li>
+          <li>No external validation requirements</li>
+          <li>Ideal for internal services, IoT devices, and corporate networks</li>
+          <li>Lower cost for high certificate volumes</li>
+          <li>Requires managing and securing your own CA infrastructure</li>
+        </ul>
+
+        <h2>The Dual-EKU Deprecation Challenge</h2>
+        <p>Historically, organizations could use public TLS certificates for both server and client authentication. However, starting in 2025, major browsers led by Google Chrome are deprecating certificates with both Server Authentication and Client Authentication EKUs.</p>
+
+        <h3>Timeline</h3>
+        <ul>
+          <li><strong>October 2025:</strong> DigiCert stopped including Client Authentication EKU by default</li>
+          <li><strong>May 2026:</strong> Client Authentication EKU will be completely removed from public TLS certificates</li>
+        </ul>
+
+        <h3>Solutions for mTLS after dual-EKU deprecation</h3>
+        <ul>
+          <li><strong>Private PKI:</strong> Deploy an internal CA for client certificates</li>
+          <li><strong>DigiCert X9 PKI:</strong> A purpose-built public PKI for client authentication, governed by ASC X9 standards</li>
+          <li><strong>Managed PKI Services:</strong> Use CA providers' managed private PKI offerings</li>
+        </ul>
+      </div>
+
+      <ChapterNav
+        previous={{
+          title: "How Mutual TLS Works",
+          href: "/security/mtls-handshake"
+        }}
+        next={{
+          title: "mTLS Use Cases and Applications",
+          href: "/security/use-cases"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

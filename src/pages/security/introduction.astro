@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>1. Introduction to TLS and mTLS</h1>
+      </header>
+
+      <div class="chapter-content">
+        <p>Transport Layer Security (TLS) is the fundamental protocol for securing network communications on the internet. As the successor to SSL (Secure Sockets Layer), TLS provides encryption, authentication, and data integrity for connections between clients and servers.</p>
+
+        <h2>What is Standard TLS?</h2>
+        <p>In standard TLS, only the server is authenticated to the client. When you visit an HTTPS website, your browser verifies the server's identity using its certificate, but the server doesn't verify who you are. This one-way authentication is sufficient for most public web applications.</p>
+
+        <h2>What is Mutual TLS (mTLS)?</h2>
+        <p>Mutual TLS extends standard TLS by adding client authentication. In mTLS, both the client and server verify each other's identities using digital certificates before establishing a secure connection. This two-way authentication provides significantly stronger security for scenarios where both parties need to prove their identity.</p>
+
+        <h2>Key Difference</h2>
+        <ul>
+          <li><strong>Standard TLS:</strong> Server authenticates to client (one-way)</li>
+          <li><strong>mTLS:</strong> Both client and server authenticate to each other (two-way)</li>
+        </ul>
+      </div>
+
+      <ChapterNav
+        next={{
+          title: "Understanding X.509 Certificates",
+          href: "/security/x509-certificates"
+        }}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content li {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
