@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
+// Ensure baseUrl ends with a slash for proper URL construction
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 ---
 
 <Layout>
@@ -23,28 +25,28 @@ const baseUrl = import.meta.env.BASE_URL;
       <div class="section-group">
         <h3>Core Concepts</h3>
         <div class="chapters-grid">
-          <a href={`${baseUrl}security/introduction`} class="chapter-card">
+          <a href={`${base}security/introduction`} class="chapter-card">
             <span class="chapter-number">1</span>
             <div class="chapter-content">
               <h4>Introduction to TLS and mTLS</h4>
               <p>Learn the fundamentals of Transport Layer Security and mutual authentication</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/x509-certificates`} class="chapter-card">
+          <a href={`${base}security/x509-certificates`} class="chapter-card">
             <span class="chapter-number">2</span>
             <div class="chapter-content">
               <h4>Understanding X.509 Certificates</h4>
               <p>Deep dive into the structure and components of digital certificates</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/certificate-authorities`} class="chapter-card">
+          <a href={`${base}security/certificate-authorities`} class="chapter-card">
             <span class="chapter-number">3</span>
             <div class="chapter-content">
               <h4>Certificate Authorities and PKI</h4>
               <p>Explore the role of CAs and public key infrastructure</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/cryptography-fundamentals`} class="chapter-card">
+          <a href={`${base}security/cryptography-fundamentals`} class="chapter-card">
             <span class="chapter-number">4</span>
             <div class="chapter-content">
               <h4>Public Key Cryptography Fundamentals</h4>
@@ -57,21 +59,21 @@ const baseUrl = import.meta.env.BASE_URL;
       <div class="section-group">
         <h3>Implementation</h3>
         <div class="chapters-grid">
-          <a href={`${baseUrl}security/mtls-handshake`} class="chapter-card">
+          <a href={`${base}security/mtls-handshake`} class="chapter-card">
             <span class="chapter-number">5</span>
             <div class="chapter-content">
               <h4>How Mutual TLS Works</h4>
               <p>Step-by-step guide to the mTLS handshake process</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/public-vs-private-pki`} class="chapter-card">
+          <a href={`${base}security/public-vs-private-pki`} class="chapter-card">
             <span class="chapter-number">6</span>
             <div class="chapter-content">
               <h4>Public PKI vs Private PKI</h4>
               <p>Compare public and private certificate infrastructure options</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/use-cases`} class="chapter-card">
+          <a href={`${base}security/use-cases`} class="chapter-card">
             <span class="chapter-number">7</span>
             <div class="chapter-content">
               <h4>mTLS Use Cases and Applications</h4>
@@ -84,21 +86,21 @@ const baseUrl = import.meta.env.BASE_URL;
       <div class="section-group">
         <h3>Operations</h3>
         <div class="chapters-grid">
-          <a href={`${baseUrl}security/best-practices`} class="chapter-card">
+          <a href={`${base}security/best-practices`} class="chapter-card">
             <span class="chapter-number">8</span>
             <div class="chapter-content">
               <h4>Security Best Practices</h4>
               <p>Essential practices for managing certificates and mTLS</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/troubleshooting`} class="chapter-card">
+          <a href={`${base}security/troubleshooting`} class="chapter-card">
             <span class="chapter-number">9</span>
             <div class="chapter-content">
               <h4>Common Issues and Troubleshooting</h4>
               <p>Solutions to common mTLS implementation challenges</p>
             </div>
           </a>
-          <a href={`${baseUrl}security/conclusion`} class="chapter-card">
+          <a href={`${base}security/conclusion`} class="chapter-card">
             <span class="chapter-number">10</span>
             <div class="chapter-content">
               <h4>Conclusion and Next Steps</h4>
@@ -111,7 +113,7 @@ const baseUrl = import.meta.env.BASE_URL;
       <div class="section-group">
         <h3>Reference</h3>
         <div class="chapters-grid">
-          <a href={`${baseUrl}security/glossary`} class="chapter-card">
+          <a href={`${base}security/glossary`} class="chapter-card">
             <span class="chapter-number">📚</span>
             <div class="chapter-content">
               <h4>Glossary of Terms</h4>
