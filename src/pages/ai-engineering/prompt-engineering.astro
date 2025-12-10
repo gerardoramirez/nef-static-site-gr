@@ -1,0 +1,368 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+// Ensure baseUrl ends with a slash for proper URL construction
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <header class="page-header">
+      <a href={`${base}ai-engineering`} class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to AI Engineering
+      </a>
+      <h1>Prompt Engineering</h1>
+      <p class="subtitle">Techniques and examples for crafting effective AI prompts</p>
+    </header>
+
+    <article class="content">
+      <section class="intro">
+        <p>Prompt engineering is the art and science of crafting inputs that guide AI models to produce high-quality, relevant outputs. Well-designed prompts can transform a basic AI interaction into a powerful tool for analysis, research, and problem-solving.</p>
+      </section>
+
+      <section class="example-section">
+        <h2>Example: Elite Market Research Prompt</h2>
+        <p>Here's a comprehensive prompt template for conducting thorough market research using AI. This example demonstrates how structured, detailed prompts can yield professional-grade analysis.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">Market Research Prompt Template</span>
+          </div>
+          <pre class="prompt-content"><code>I'm building [product] for [audience] to solve [problem].
+
+Please analyze:
+
+MARKET SIZE AND GROWTH
+
+• Assess current market size and potential for growth
+• Evaluate key trends indicating increasing or declining demand
+• Provide evidence from search volumes, surveys, industry data
+• Include supporting evidence from Reddit, Amazon, and forums
+
+COMPETITIVE LANDSCAPE
+
+• Identify primary competitors with strengths and weaknesses
+• Highlight clear opportunities to differentiate meaningfully
+• Assess how sustainable my competitive advantage will be
+• Show what makes my solution truly different and better
+
+PRICING AND MARGINS
+
+• Suggest realistic pricing strategies and benchmarks
+• Analyze customer willingness to pay based on real data
+• Evaluate potential for recurring or expanded revenue
+• Find opportunities for complimentary products or upsells
+
+OPERATIONAL FEASIBILITY
+
+• Outline key resources needed to launch successfully
+• Evaluate unique operational challenges for this business
+• Identify opportunities or limitations in scaling efficiently
+• Assess talent, technology, and supplier requirements
+
+MARKETING STRATEGY
+
+• Identify most effective channels for my target market
+• Evaluate typical customer acquisition costs vs. lifetime value
+• Highlight tactics that will resonate with this audience
+• Provide specific marketing approaches with proof they work
+
+RISKS AND REGULATIONS
+
+• Outline significant market, operational, and regulatory risks
+• Identify potential barriers to entry or execution
+• Assess competitive threats and potential market shifts
+• Highlight any intellectual property or legal concerns
+
+LONG-TERM POTENTIAL
+
+• Analyze whether this idea has longevity beyond trends
+• Suggest realistic growth paths and potential expansions
+• Identify possible pivot options if needed
+• Evaluate long-term competitive landscape
+
+VALIDATION APPROACH
+
+• Recommend concrete next steps for testing this idea
+• Identify early warning signs that would indicate problems
+• Suggest minimum viable test approach before full investment
+• Outline key metrics that would indicate success
+
+Provide a clear conclusion on overall viability with specific next steps.</code></pre>
+        </div>
+
+        <div class="prompt-analysis">
+          <h3>Why This Prompt Works</h3>
+          <ul>
+            <li><strong>Clear Structure:</strong> Organized sections guide the AI to cover all critical aspects of market research</li>
+            <li><strong>Specific Instructions:</strong> Each bullet point asks for concrete, actionable information rather than vague generalities</li>
+            <li><strong>Evidence-Based:</strong> Requests for data sources (Reddit, Amazon, forums) ensure grounded analysis</li>
+            <li><strong>Comprehensive Scope:</strong> Covers market, competition, operations, marketing, risks, and validation</li>
+            <li><strong>Actionable Output:</strong> Ends with a request for clear conclusions and next steps</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tips-section">
+        <h2>Prompt Engineering Best Practices</h2>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <h3>Be Specific</h3>
+            <p>Vague prompts yield vague results. Specify the format, depth, and scope you need.</p>
+          </div>
+          <div class="tip-card">
+            <h3>Use Structure</h3>
+            <p>Organize complex requests into clear sections with bullet points or numbered lists.</p>
+          </div>
+          <div class="tip-card">
+            <h3>Request Evidence</h3>
+            <p>Ask for data sources, examples, or proof to ensure the AI provides grounded responses.</p>
+          </div>
+          <div class="tip-card">
+            <h3>Define Context</h3>
+            <p>Provide background information about your audience, goals, and constraints.</p>
+          </div>
+          <div class="tip-card">
+            <h3>Iterate and Refine</h3>
+            <p>Use the AI's responses to refine your prompts for better results in subsequent interactions.</p>
+          </div>
+          <div class="tip-card">
+            <h3>Set Expectations</h3>
+            <p>Specify the desired output format, length, and level of detail upfront.</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    min-height: calc(100vh - 200px);
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: #3b82f6;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .intro {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .intro p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #4b5563;
+  }
+
+  .example-section {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 1rem;
+  }
+
+  .example-section > p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: #4b5563;
+    margin-bottom: 2rem;
+  }
+
+  .prompt-container {
+    background: #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .prompt-header {
+    background: #111827;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #374151;
+  }
+
+  .prompt-label {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .prompt-content {
+    padding: 2rem;
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .prompt-content code {
+    color: #e5e7eb;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    white-space: pre;
+    display: block;
+  }
+
+  .prompt-analysis {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .prompt-analysis h3 {
+    margin-top: 0;
+  }
+
+  .prompt-analysis ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .prompt-analysis li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    line-height: 1.75;
+    color: #4b5563;
+  }
+
+  .prompt-analysis li:last-child {
+    border-bottom: none;
+  }
+
+  .prompt-analysis li strong {
+    color: #111827;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .tips-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .tip-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .tip-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .tip-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+    color: #111827;
+  }
+
+  .tip-card p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 0.9375rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    .prompt-content {
+      padding: 1.5rem;
+    }
+
+    .prompt-content code {
+      font-size: 0.875rem;
+    }
+
+    .prompt-analysis {
+      padding: 1.5rem;
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
