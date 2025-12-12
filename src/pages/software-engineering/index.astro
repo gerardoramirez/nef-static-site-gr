@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <header class="page-header">
+      <h1>Software Engineering</h1>
+      <p class="subtitle">Comprehensive guides and resources for software development</p>
+    </header>
+
+    <section class="intro">
+      <p>Explore various aspects of software engineering, from mobile development to backend systems, with practical guides and best practices.</p>
+    </section>
+
+    <section class="contents">
+      <h2>Topics</h2>
+      
+      <div class="section-group">
+        <div class="chapters-grid">
+          <a href={`${base}software-engineering/mobile`} class="chapter-card">
+            <span class="chapter-number">📱</span>
+            <div class="chapter-content">
+              <h4>Mobile Development</h4>
+              <p>Guides for building mobile applications across different platforms and frameworks</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="key-takeaways">
+      <h2>What You'll Find</h2>
+      <ul>
+        <li>Platform-specific development guides</li>
+        <li>Cross-platform development frameworks</li>
+        <li>Best practices and architectural patterns</li>
+        <li>Deployment and distribution strategies</li>
+        <li>Performance optimization techniques</li>
+      </ul>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .intro {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #4b5563;
+  }
+
+  .contents {
+    margin-bottom: 4rem;
+  }
+
+  .contents h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 2rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .section-group {
+    margin-bottom: 3rem;
+  }
+
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .chapter-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .chapter-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+  }
+
+  .chapter-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3b82f6;
+    min-width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    background: #eff6ff;
+    border-radius: 8px;
+  }
+
+  .chapter-content {
+    flex: 1;
+  }
+
+  .chapter-content h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 0.5rem;
+  }
+
+  .chapter-content p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .key-takeaways {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .key-takeaways h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 1rem;
+  }
+
+  .key-takeaways ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .key-takeaways li {
+    padding: 0.75rem 0;
+    color: #4b5563;
+    line-height: 1.6;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 1.125rem;
+  }
+
+  .key-takeaways li:last-child {
+    border-bottom: none;
+  }
+
+  .key-takeaways li::before {
+    content: "✓ ";
+    color: #3b82f6;
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .chapters-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

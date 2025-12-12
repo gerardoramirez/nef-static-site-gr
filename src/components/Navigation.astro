@@ -29,6 +29,7 @@ const pathForComparison = getPathWithoutBase(currentPath);
     <ul class="nav-links">
       <li><a href={base} class={pathForComparison === '/' ? 'active' : ''}>Home</a></li>
       <li><a href={`${base}ai-engineering`} class={pathForComparison.startsWith('/ai-engineering') ? 'active' : ''}>AI Engineering</a></li>
+      <li><a href={`${base}software-engineering`} class={pathForComparison.startsWith('/software-engineering') ? 'active' : ''}>Software Engineering</a></li>
       <li><a href={`${base}security`} class={pathForComparison.startsWith('/security') ? 'active' : ''}>Security</a></li>
     </ul>
   </div>
