@@ -210,6 +210,17 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
         <pre><code>flutter test test/widget_test.dart</code></pre>
 
         <h2>Debugging Tips</h2>
+        <p>If you encounter build issues or dependency problems, try this cleanup sequence:</p>
+        <pre><code>flutter clean
+rm -rf .dart_tool
+flutter pub get</code></pre>
+        <p>This sequence will:</p>
+        <ul>
+          <li>Clean all build artifacts</li>
+          <li>Remove the Dart tool cache directory</li>
+          <li>Re-download and resolve all dependencies</li>
+        </ul>
+        <p>Other useful debugging techniques:</p>
         <ul>
           <li><strong>Hot Reload:</strong> Press <code>r</code> in the terminal running <code>flutter run</code></li>
           <li><strong>Hot Restart:</strong> Press <code>R</code> to restart the app</li>

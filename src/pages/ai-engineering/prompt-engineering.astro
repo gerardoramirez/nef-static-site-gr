@@ -109,6 +109,97 @@ Provide a clear conclusion on overall viability with specific next steps.</code>
         </div>
       </section>
 
+      <section class="example-section">
+        <h2>Example: App Idea Prompt – ScreenSeek</h2>
+        <p>This prompt describes a complete concept and design spec for an AI-powered screenshot organizer app called ScreenSeek.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">ScreenSeek App Idea Prompt</span>
+          </div>
+          <pre class="prompt-content"><code># ScreenSeek Prompt
+
+Create a mobile-first, dark-mode React application called "ScreenSeek" using Tailwind CSS and Lucide React icons. The app is an AI-powered screenshot organizer.
+
+### 1. Design System &amp; Theme
+
+- Background: Deep Slate (bg-slate-900, hex #0f172a).
+- Primary Accent: Teal (text-teal-400, bg-teal-500).
+- Secondary Accent: Violet (for AI elements).
+- Cards/Surfaces: Semi-transparent Slate (bg-slate-800/50) with thin borders (border-slate-700).
+- Typography: Sans-serif, clean, white text for headings, slate-400 for secondary text.
+- Style: Use rounded corners (rounded-xl or rounded-2xl), subtle glassmorphism (backdrop-blur), and mobile-app styling (fixed bottom navigation).
+
+### 2. Navigation
+
+Create a fixed bottom navigation bar (h-16) with a blur effect (bg-slate-900/90). It should have 4 tabs with icons (use Lucide):
+
+1. Home (LayoutDashboard)
+2. Ask AI (MessageSquareText) - Make this the active focus color.
+3. Library (Library)
+4. Settings (Settings)
+
+### 3. Views &amp; Functionality
+
+A. Dashboard (Home View)
+
+- Header: "Hello, Alex". Subtext: "You have 4 screenshots analyzed."
+- Stats Row: Two side-by-side cards:
+  1. "Actions" (Icon: Zap): Value "12", Label "Smart actions found".
+  2. "Saved" (Icon: TrendingUp): Value "2.5h", Label "Time saved".
+- Recent List: A list of recent screenshots with a small thumbnail on the left, title, and category badge.
+
+B. Library View
+
+- Header: "Library" with a count badge.
+- Search: A search bar at the top ("Search text in images...").
+- Filter Chips: A horizontal scrollable list of pills: All, Travel, Receipts, WiFi, Event.
+- Grid: A 2-column grid of Screenshot Cards.
+  - Card Design: Aspect ratio 3/4. Image background. Gradient overlay at the bottom.
+  - Overlay Content: Category badge (pill shape) and a short text summary.
+
+C. Chat View (Ask AI)
+
+- Interface: A chat interface similar to ChatGPT or iMessage.
+- Messages:
+  - AI: Slate gray background (bg-slate-800), left-aligned.
+  - User: Teal background (bg-teal-600), right-aligned.
+- Smart Actions (Crucial Feature): Inside the AI response bubbles, render interactive buttons called "Smart Actions".
+  - Design: Dark button with an icon on the left (Calendar, Copy, Map) and text on the right.
+  - Behavior: Clicking "Copy" copies text. Clicking "Calendar" shows a simulated alert.
+- Input: A text input field fixed at the bottom with a Send button.
+- Suggestions: Specific chips above the input: "Where is that flight to Chicago?", "What's the wifi password?".
+
+### 4. Data &amp; Content (Mock Data)
+
+Pre-populate the app with this specific dummy data:
+
+1. United Airlines Flight:
+   - Image: https://iili.io/fcBuh0P.png
+   - Category: Travel
+   - Summary: Flight UA455 to Chicago, Nov 14.
+   - AI Logic: If user asks "Where is that flight?", AI responds with flight details and a Smart Action Button labeled "Add to Calendar" (Nov 14, 2:00 PM).
+
+2. Blue Bottle Receipt:
+   - Image: https://i.ibb.co/gbLV8qyY/Gemini-Generated-Image-5vq2st5vq2st5vq2.png
+   - Category: Receipts
+   - Summary: Blue Bottle Coffee receipt for $9.50.
+
+3. WiFi Password:
+   - Image: https://i.ibb.co/4xGPNMp/Gemini-Generated-Image-khepsxkhepsxkhep.png
+   - Category: WiFi
+   - Summary: WiFi Password: Triangle44!
+   - AI Logic: If user asks "wifi password", AI responds with the code and a Smart Action Button labeled "Copy Password".
+
+### 5. Technical Requirements
+
+- Use React functional components.
+- Use useState for view navigation.
+- Do not implement real backend auth, just use local state.
+- Ensure the app looks good on mobile dimensions.</code></pre>
+        </div>
+      </section>
+
       <section class="tips-section">
         <h2>Prompt Engineering Best Practices</h2>
         <div class="tips-grid">
