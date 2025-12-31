@@ -200,6 +200,69 @@ Pre-populate the app with this specific dummy data:
         </div>
       </section>
 
+      <section class="example-section">
+        <h2>Example: App Idea Prompt – HospitalityHelp</h2>
+        <p>This prompt describes a complete concept and design spec for a staffing insurance platform called HospitalityHelp where businesses pay retainer fees to reserve backup workers for high-risk shifts.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">HospitalityHelp App Idea Prompt</span>
+          </div>
+          <pre class="prompt-content"><code># HospitalityHelp Prompt
+
+Build a React application called "**HospitalityHelp**", a staffing insurance platform where businesses pay retainer fees to reserve backup workers for high-risk shifts.
+
+**Tech Stack:**
+
+- React
+- Tailwind CSS (Use a Slate/Indigo color palette)
+- Lucide React (for icons)
+- Recharts (for data visualization)
+- Google Gemini API (via @google/genai) for risk analysis.
+
+**Core Functionality:**
+
+The app should have no authentication. Instead, use a "Demo Mode" state to switch between three views: **Landing Page**, **Business Dashboard**, and **Worker Dashboard**.
+
+**1. Landing Page:**
+
+- A high-converting hero section with the headline "Never Let a Shift Go Uncovered".
+- Two large CTA buttons: "Business Demo" and "Worker Demo" that switch the main view.
+- A feature grid highlighting: "Retainer Payments", "The Panic Button", and "Reputation Scoring".
+
+**2. Business Dashboard (When "Business Demo" is clicked):**
+
+- **Header Stats:** 4 cards showing Active Retainers, Total Savings (green), Reliability Rate, and Active Incidents (red).
+- **Create Retainer Form:** Inputs for Role, Date, and Risk Context.
+    - Include an "Analyze Risk" button. This should call the Google Gemini API (model: gemini-3-flash-preview) to analyze the description and return a JSON object with: riskLevel (Low/Medium/High/Critical), suggestedRetainer ($), and a reasoning string.
+    - Display the AI result in a card before the user allows "Post Retainer".
+- **Shift List:** A list of active shifts.
+    - If status is "Reserved", show a large red "PANIC BUTTON". Clicking this changes status to "Activated" (simulating a call-out).
+    - If status is "Activated", show a "Deploying..." spinner.
+- **Analytics:** A simple Bar Chart (using Recharts) showing "Revenue Saved" over 6 months.
+
+**3. Worker Dashboard (When "Worker Demo" is clicked):**
+
+- **Profile Header:** Show a mock user (e.g., "Sarah Jenkins") with a "98 Reputation" score, "Elite" tier, and total earnings.
+- **Tabs:** Toggle between "Available Retainers" and "My Standby Schedule".
+- **Shift Cards:**
+    - Show Role, Business Name, Date/Time, and Risk Level (colored badge).
+    - Show the Retainer Fee (e.g., $150) and Surge Rate (e.g., $65/hr).
+    - **Action:** If in "Available", button is "Claim Retainer". If in "My Schedule" and status is "Activated", button changes to red "I'm On My Way".
+
+**Design Aesthetics:**
+
+- Use a clean, professional "Inter" font style.
+- Use bg-slate-50 for the background and white cards with soft shadows (shadow-sm).
+- Use Indigo (indigo-600) for primary actions and Slate (slate-900) for headers.
+- Use Red (red-600) specifically for High Risk items and the Panic Button.
+
+**Data:**
+
+- Initialize with dummy data (3-4 existing shifts) so the dashboards aren't empty on load.</code></pre>
+        </div>
+      </section>
+
       <section class="tips-section">
         <h2>Prompt Engineering Best Practices</h2>
         <div class="tips-grid">
