@@ -363,6 +363,54 @@ AVOID:
         </div>
       </section>
 
+      <section class="example-section">
+        <h2>Example: ICE Score Prioritization Prompt</h2>
+        <p>This prompt guides you through the ICE (Impact, Confidence, Ease) Framework developed by Sean Ellis for scientifically prioritizing ideas, features, and experiments. It's designed to help you stop drowning in ideas and focus on what truly matters.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">ICE Score Prioritization Prompt</span>
+          </div>
+          <pre class="prompt-content"><code>Act as a Growth Hacking and Prioritization Expert, specifically trained in Sean Ellis's ICE Framework. My goal is to stop drowning in ideas and scientifically prioritize what I should work on next.
+
+Please guide me through the following process step-by-step. Do not move to the next step until I have completed the current one.
+
+STEP 1: THE OPTIONS
+
+Ask me to list the specific ideas, features, ads, or experiments I am currently considering.
+
+STEP 2: THE SCORING
+
+Once I provide the list, go through my items one by one (or in a batch, if the list is short) and ask me to provide a score from 1-10 for the following three variables. Remind me of these definitions if I get stuck:
+
+- Impact (1-10): If this works, how big will the benefit be? (10=Massive, 1=Negligible)
+- Confidence (1-10): How sure am I that this will work? (10=I have proof/data, 1=Total guess)
+- Ease (1-10): How easy is this to build/do? (10=Done today, 1=Months of work)
+
+STEP 3: THE CALCULATION
+
+Calculate the final ICE score for each item. (Sum the three numbers: Impact + Confidence + Ease).
+
+STEP 4: THE VERDICT
+
+Present the final data in a structured table sorted by the highest ICE score. Explicitly identify the #1 task I must execute immediately and advise me to ignore the others until the first one is complete.
+
+Start the session by asking me for my list of ideas.</code></pre>
+        </div>
+
+        <div class="prompt-analysis">
+          <h3>Why This Prompt Works</h3>
+          <ul>
+            <li><strong>Step-by-Step Structure:</strong> Enforces a sequential workflow that prevents rushing through the prioritization process</li>
+            <li><strong>Clear Role Definition:</strong> Establishes the AI as an expert in the ICE Framework, ensuring accurate guidance</li>
+            <li><strong>Explicit Definitions:</strong> Provides concrete scoring criteria with clear anchors (10 vs 1) to reduce ambiguity</li>
+            <li><strong>Guided Interaction:</strong> Instructs the AI to not proceed until each step is complete, maintaining focus and thoroughness</li>
+            <li><strong>Actionable Output:</strong> Ends with a specific recommendation table and explicit next action, removing decision paralysis</li>
+            <li><strong>Batch Flexibility:</strong> Allows scoring items individually or in groups based on list length, adapting to different use cases</li>
+          </ul>
+        </div>
+      </section>
+
       <section class="tips-section">
         <h2>Prompt Engineering Best Practices</h2>
         <div class="tips-grid">
