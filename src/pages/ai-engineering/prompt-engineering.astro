@@ -264,6 +264,206 @@ The app should have no authentication. Instead, use a "Demo Mode" state to switc
       </section>
 
       <section class="example-section">
+        <h2>Example: App Idea Prompt – CalChat</h2>
+        <p>This prompt describes a complete concept and design spec for a voice-activated calorie and macro tracking web application called CalChat.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">CalChat App Idea Prompt</span>
+          </div>
+          <pre class="prompt-content"><code>Build a voice-activated calorie and macro tracking web application called "CalChat" with the following specifications:
+
+## **Design Requirements**
+
+**Visual Style:**
+
+- Black background with white text throughout the entire app
+- Minimalist, clean design with a modern aesthetic
+- Use white borders for all UI elements
+- High contrast, monochromatic color scheme
+- Responsive design that works on mobile and desktop
+
+**Layout:**
+
+- Single page application with centered content
+- Maximum width of 4xl for main content area
+- 8px padding around the entire page
+
+## **Core Features**
+
+### **1. Header Section**
+
+- Left side: Logo made from a filled MessageSquare icon (size 40) with a small black dot in the center, next to the text "CalChat" in large bold font (text-4xl)
+- Right side: Hamburger menu icon (Menu icon, size 24) button that resets all today's entries when clicked
+- Menu button should have a subtle border that becomes white on hover
+
+### **2. Macro Display Dashboard**
+
+Display four large cards in a 2x2 grid showing:
+
+- **Calories** (integer, no decimal)
+- **Protein** (in grams, 1 decimal place)
+- **Carbs** (in grams, 1 decimal place)
+- **Fat** (in grams, 1 decimal place)
+
+Each card should have:
+
+- 2px white border
+- Large bold numbers (text-5xl)
+- Small uppercase label below in gray-400
+
+### **3. Voice Input Component**
+
+- Large circular button (128x128 pixels)
+- Center of the page
+- White border (2px) when inactive
+- Microphone icon when ready to listen
+- When active: white background, black icon, pulsing animation
+- Text below: "TAP TO SPEAK" (gray, uppercase, small) or "Processing..." when busy
+- Status messages appear below showing what was spoken
+- Must handle microphone permissions and show clear error messages if denied
+- Show browser compatibility message if speech recognition not supported (works in Chrome, Edge, Safari)
+
+### **4. Food Entry List**
+
+- Section titled "TODAY'S ENTRIES" in large bold text
+- List of all food entries from today
+- Each entry shows:
+    - Food name (bold, large)
+    - Calories, Protein, Carbs, Fat in a horizontal row
+    - Delete button (trash icon) on the right
+- Empty state message: "No entries yet. Start by speaking what you've eaten."
+- Entries have subtle gray borders that turn white on hover
+
+## **Technical Implementation**
+
+### **Database (Bolt Database)**
+
+Create a `food_entries` table with:
+
+- `id` (uuid, primary key, auto-generated)
+- `user_id` (uuid, auto-generated for now)
+- `food_name` (text, required)
+- `calories` (integer, default 0)
+- `protein` (decimal 10,2, default 0)
+- `carbs` (decimal 10,2, default 0)
+- `fat` (decimal 10,2, default 0)
+- `created_at` (timestamptz, auto-set to now)
+
+Enable Row Level Security with public access policies for SELECT, INSERT, and DELETE operations.
+
+### **Speech Recognition**
+
+Implement Web Speech API with:
+
+- Support for both `window.SpeechRecognition` and `window.webkitSpeechRecognition`
+- Language: en-US
+- `continuous: false` - stops after one phrase
+- `interimResults: false` - only final results
+- Error handling for microphone permission denials
+- Console logging for debugging (log when started, recognized speech, and ended)
+- Prevent duplicate entries by tracking processed transcripts
+
+**Critical:** Ensure only ONE entry is created per voice input by:
+
+1. Using a ref to track the last processed transcript
+2. Only processing new transcripts that differ from the last one
+3. Immediately resetting the transcript after processing
+
+### **Food Parsing Logic**
+
+When speech is recognized, parse the input using pattern matching for these foods (in order of priority):
+
+1. Chicken breast / chicken: 165 cal, 31g protein, 0g carbs, 3.6g fat
+2. Salmon: 206 cal, 22g protein, 0g carbs, 13g fat
+3. Rice: 130 cal, 2.7g protein, 28g carbs, 0.3g fat
+4. Broccoli: 55 cal, 3.7g protein, 11g carbs, 0.6g fat
+5. Egg: 155 cal, 13g protein, 1.1g carbs, 11g fat
+6. Banana: 105 cal, 1.3g protein, 27g carbs, 0.4g fat
+7. Apple: 95 cal, 0.5g protein, 25g carbs, 0.3g fat
+8. Oatmeal: 150 cal, 5g protein, 27g carbs, 3g fat
+9. Protein shake: 120 cal, 24g protein, 3g carbs, 1.5g fat
+10. Almonds: 160 cal, 6g protein, 6g carbs, 14g fat
+11. Sweet potato: 112 cal, 2g protein, 26g carbs, 0.1g fat
+12. Steak: 271 cal, 25g protein, 0g carbs, 19g fat
+13. Turkey: 135 cal, 30g protein, 0g carbs, 0.7g fat
+14. Tuna: 132 cal, 28g protein, 0g carbs, 1.3g fat
+15. Pasta: 220 cal, 8g protein, 43g carbs, 1.3g fat
+16. Bread: 265 cal, 9g protein, 49g carbs, 3.2g fat
+17. Avocado: 160 cal, 2g protein, 8.5g carbs, 15g fat
+18. Yogurt: 100 cal, 10g protein, 13g carbs, 0.4g fat
+19. Milk: 103 cal, 8g protein, 12g carbs, 2.4g fat
+
+Use case-insensitive regex pattern matching. If no match found, default to: 200 cal, 10g protein, 20g carbs, 8g fat.
+
+### **Functionality**
+
+**On Load:**
+
+- Fetch all food entries from today (since midnight)
+- Calculate and display total macros
+- Order entries by created_at descending (newest first)
+
+**When User Speaks:**
+
+1. Show "Processing..." status
+2. Parse the spoken text to identify food
+3. Insert entry into database
+4. Reload entries and recalculate totals
+5. Show "Entry saved!" message for 2 seconds
+6. Prevent multiple entries from same speech input
+
+**Delete Entry:**
+
+- Click trash icon to delete specific entry
+- Reload and recalculate totals
+
+**Reset Button:**
+
+- Delete all entries from today
+- Clear the display
+
+### **Tech Stack**
+
+- React with TypeScript
+- Vite for build tooling
+- Tailwind CSS for styling
+- Bolt Database for database and backend
+- Lucide React for icons (Mic, MicOff, Trash2, Menu, MessageSquare)
+- Web Speech API for voice recognition
+
+### **Component Structure**
+
+`App.tsx (main component)
+├── VoiceInput.tsx (microphone button with speech recognition)
+├── MacroDisplay.tsx (2x2 grid of macro cards)
+├── FoodEntryList.tsx (list of today's entries)
+└── hooks/useSpeechRecognition.ts (custom hook for speech API)`
+
+### **State Management**
+
+App maintains:
+
+- `entries` - array of today's food entries
+- `totalMacros` - calculated totals for all macros
+- `isProcessing` - prevents duplicate submissions
+- `statusMessage` - user feedback
+
+## **Important Implementation Details**
+
+1. All timestamps should filter for "today" starting at midnight
+2. Speech recognition must only process each transcript once
+3. Error states must be clearly communicated to users
+4. Microphone permission prompts should be explained
+5. The app should handle speech recognition starting/stopping gracefully
+6. Use proper TypeScript types for all data structures
+7. Follow React best practices with proper hooks and state management
+
+Build this as a production-ready, fully functional application with excellent user experience and error handling.</code></pre>
+        </div>
+      </section>
+
+      <section class="example-section">
         <h2>Example: Elite Copywriter Prompt</h2>
         <p>This prompt structures an AI assistant as an expert direct response copywriter using the AIDA framework (Attention-Interest-Desire-Action) to craft high-converting copy through psychological triggers and emotional storytelling.</p>
 
