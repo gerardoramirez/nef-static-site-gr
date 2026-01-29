@@ -464,6 +464,69 @@ Build this as a production-ready, fully functional application with excellent us
       </section>
 
       <section class="example-section">
+        <h2>Example: App Idea Prompt – SkillRally</h2>
+        <p>This prompt describes a complete concept and design spec for a skills-based hiring platform called SkillRally where developers compete in technical challenges created by companies to win job offers and prizes. The app uses a dark-themed, premium UI with glassmorphism.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">SkillRally App Idea Prompt</span>
+          </div>
+          <pre class="prompt-content"><code>Create a fully functional React application called "SkillRally" using Tailwind CSS, Lucide React icons, and React Router.
+
+### App Overview
+
+SkillRally is a skills-based hiring platform where developers compete in technical challenges (created by companies) to win job offers and prizes. The app features a dark-themed, premium UI with glassmorphism effects.
+
+### Design System
+
+- **Theme:** Dark mode only. Backgrounds: Zinc-900 (#09090b) and Zinc-800 (#18181b).
+- **Primary Color:** Emerald (#22c55e) for buttons, accents, and progress bars.
+- **Typography:** "Space Grotesk" for headings/display; "Inter" for body text.
+- **Styling:** Gradients, subtle borders (zinc-700), and backdrop blur throughout.
+
+### Pages &amp; Routing
+
+**1. Navbar (Global)**
+
+- Sticky top with glass effect (backdrop-blur).
+- Logo: Trophy icon inside a rounded-xl container with emerald gradient background; text "SkillRally" with "Rally" having a gradient text effect.
+- Links: Explore Contests, Create Contest (styled as CTA button).
+- Mobile-responsive hamburger menu.
+
+**2. Home Page (/)**
+
+- **Hero:** Centered headline "Prove Your Skills. Get Hired." with background image overlay. Two CTAs: "Start Competing" and "Post a Challenge".
+- **Stats Banner:** Horizontal strip with stats such as "$250k+ Prize Pool", "45 Active Challenges", "1.2k Developers".
+- **Contest Grid:** Cards for each contest. Each card shows: company logo, role title, difficulty badge (Junior / Mid / Senior / Expert), tech stack tags, prize pool, and deadline. Hover: subtle glow or border highlight.
+
+**3. Create Contest Page (/create)**
+
+- Multi-step wizard for creating a hiring challenge with AI assistance.
+- **Step 1:** Form fields for Company Name, Hiring Role, Difficulty (button group), and Topic.
+- **Action:** "Generate with AI" button. Call an LLM API (OpenAI or similar) via a generic, swappable service layer (e.g., single module that accepts an API key and returns structured JSON). The API should return a JSON object with: title, description, deliverables (array), techStack (array), evaluationCriteria (array).
+- **Step 2:** Show generated content in a preview card. "Publish Challenge" adds the contest to app state and redirects to home.
+
+**4. Contest Detail Page (/contest/:id)**
+
+- **Header:** Banner with company logo, contest title, countdown timer, and prominent "Submit Solution" button.
+- **Tabs:** "Challenge Details" and "Leaderboard".
+- **Details Tab:** Full description, deliverables list, tech stack tags, and resources.
+- **Leaderboard Tab:** Table with Rank, Candidate Name/Avatar, Score (progress bar), Status (Hired, In Review, Submitted). Use mock data.
+- **Submit Modal:** Form for GitHub URL and notes; submit adds entry to state or mock list.
+
+### Data
+
+- Pre-populate with realistic mock data for well-known tech companies (e.g., Netflix, Spotify, Stripe, Airbnb). Use distinct logos and plausible technical descriptions for each contest.
+
+### Technical Requirements
+
+- Use react-router-dom for all navigation.
+- Fully responsive layout (mobile, tablet, desktop).
+- AI generation must use a generic service layer (single abstraction that can be swapped or configured with an API key; no provider logic in UI components).</code></pre>
+        </div>
+      </section>
+
+      <section class="example-section">
         <h2>Example: Elite Copywriter Prompt</h2>
         <p>This prompt structures an AI assistant as an expert direct response copywriter using the AIDA framework (Attention-Interest-Desire-Action) to craft high-converting copy through psychological triggers and emotional storytelling.</p>
 
