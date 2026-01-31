@@ -464,6 +464,60 @@ Build this as a production-ready, fully functional application with excellent us
       </section>
 
       <section class="example-section">
+        <h2>Example: App Idea Prompt – SpendWise</h2>
+        <p>This prompt describes a complete concept and design spec for a behavioral finance app called SpendWise that helps users understand their spending patterns and build better financial habits through daily check-ins and AI-powered insights.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">SpendWise App Idea Prompt</span>
+          </div>
+          <pre class="prompt-content"><code>Create a demo prototype for "SpendWise" - a behavioral finance app that helps users understand their spending patterns and build better financial habits.
+
+**Important:** This is a demo prototype only. No authentication, no onboarding flows, no sign-up required. Users should land on the page and try the app immediately with pre-loaded dummy data.
+
+## Structure: Two Pages
+
+### Page 1 - Landing Page
+
+- Hero section with headline: "Build Better Money Habits" and subheadline: "The behavioral finance app that helps you understand why you spend - with daily reflection, AI pattern recognition, and peer accountability."
+- Financial Health Score preview showing a sample score of 78/100 with a circular progress indicator
+- Three key features: "Understand Your Patterns" (AI reveals spending behaviors), "Daily Reflections" (quick mood + transaction logs), "Accountability Partner" (connect with a buddy or mentor)
+- CTA button: "Try the Dashboard"
+
+### Page 2 - App Dashboard
+
+- Financial Health Score prominently displayed (78/100) with trend arrow showing +6 from last week
+- "Your Spending Patterns" card showing AI-detected insights:
+    - "Stress shopping: You spend 35% more on weekends following busy work weeks"
+    - "Evening impulse buys: 72% of your unplanned purchases occur after 9pm"
+    - "Subscription creep: Your monthly subscriptions have increased by 30% in the last quarter"
+- "Daily Reflection" card with emotion selector (😊 😐 😔 😠) and quick transaction entry
+- "Recent Transactions" feed showing purchases with pattern flags (e.g., "⚠️ Possible emotional purchase" on a $120 retail order)
+- "Your Accountability Partner" card showing paired buddy "Jordan T." with next check-in date
+- Monthly spending chart comparing current month vs last month vs target
+
+## Design Specs
+
+- Colors: Navy blue (`#1E3A8A`) as primary, sky blue (`#7DD3FC`) as accent, off-white background (`#F8FAFC`)
+- Clean, modern aesthetic - think Headspace meets personal finance
+- Rounded corners (12px), subtle shadows, generous spacing
+- Font: Inter or similar contemporary sans-serif
+
+## Technical Requirements
+
+- Single HTML file
+- No external dependencies except Google Fonts
+- No backend needed - all data is hardcoded dummy data
+- Must be fully responsive - looks great on mobile, tablet, and desktop
+- Mobile: vertical stacking, touch-friendly buttons (minimum 44px), adaptive typography
+
+## Goal
+
+Let someone experience the core value proposition - seeing their behavioral spending patterns identified by AI - in under 10 seconds.</code></pre>
+        </div>
+      </section>
+
+      <section class="example-section">
         <h2>Example: App Idea Prompt – SkillRally</h2>
         <p>This prompt describes a complete concept and design spec for a skills-based hiring platform called SkillRally where developers compete in technical challenges created by companies to win job offers and prizes. The app uses a dark-themed, premium UI with glassmorphism.</p>
 
@@ -523,6 +577,92 @@ SkillRally is a skills-based hiring platform where developers compete in technic
 - Use react-router-dom for all navigation.
 - Fully responsive layout (mobile, tablet, desktop).
 - AI generation must use a generic service layer (single abstraction that can be swapped or configured with an API key; no provider logic in UI components).</code></pre>
+        </div>
+      </section>
+
+      <section class="example-section">
+        <h2>Example: App Idea Prompt – FineTrained</h2>
+        <p>This prompt describes a complete concept and design spec for a marketplace connecting AI labs with rare domain experts for model training, evaluation, and fine-tuning. The app uses a professional, enterprise-grade aesthetic similar to Scale AI or Anthropic.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">FineTrained App Idea Prompt</span>
+          </div>
+          <pre class="prompt-content"><code>Create a demo prototype for "FineTrained" - a marketplace connecting AI labs with rare domain experts for model training, evaluation, and fine-tuning.
+
+## Important Notes
+
+- This is a demo prototype only - no authentication, no onboarding flows, no sign-up required
+- Users should land on the page and try the app immediately with pre-loaded dummy data
+- No backend needed - all data should be hardcoded
+
+## Structure
+
+**Page 1: Landing Page**
+
+- Hero section with headline: "The world's rarest expertise, on demand for AI"
+- Subheadline: "Connect AI labs with verified domain experts for training, evaluation, and fine-tuning"
+- Tagline somewhere prominent: "Hire education"
+- Two CTA buttons: "I'm an Expert" and "I'm an AI Lab"
+- Stats bar showing: "2,400+ Experts | $47M in Bounties Paid | 156 AI Labs"
+- How it works section (3 steps for each user type)
+- Featured experts carousel (show 4-5 expert cards with photos, credentials, specialties, hourly rate)
+- Testimonial section
+- "Browse Open Bounties" CTA that links to the App page
+
+**Page 2: App Page (Bounty Marketplace)**
+
+- Clean dashboard interface
+- Left sidebar with filters:
+    - Category dropdown (Computational Biology, Physics, Materials Science, Medicine, Mathematics, etc.)
+    - Bounty type (Training Data Review, Model Evaluation, Dataset Creation, Red Team Assessment)
+    - Rate range slider ($200/hr - $5,000/hr)
+    - Urgency (Standard, Priority, Urgent)
+- Main content area showing bounty cards in a grid, each with:
+    - AI Lab logo (use placeholder icons)
+    - Bounty title (e.g., "Protein Folding Expert - Dataset Validation")
+    - Brief description
+    - Required expertise tags
+    - Hourly rate or fixed bounty amount
+    - Estimated hours
+    - "Apply" button
+- Pre-load 8-10 realistic bounties across different domains
+- Include a "Post a Bounty" floating button
+- Top bar with search functionality
+
+## Pre-loaded Dummy Data (Bounties)
+
+1. **Quantum Error Correction Review** - DeepMind-style lab seeking physicist to evaluate model outputs on quantum computing concepts. $1,500/hr, 10 hours.
+2. **Computational Biology Dataset** - Biotech AI startup needs molecular biologist to create gold-standard protein interaction dataset. $800/hr, 40 hours.
+3. **Nuclear Physics Red Team** - Government contractor seeking nuclear physicist to identify model vulnerabilities. $2,500/hr, 5 hours.
+4. **Rare Disease Diagnostics** - Healthcare AI company needs clinician with orphan disease experience. $600/hr, 20 hours.
+5. **Advanced Materials Science** - Semiconductor company needs materials scientist to validate synthesis predictions. $900/hr, 15 hours.
+6. **Mathematical Proof Verification** - Research lab needs mathematician for formal reasoning evaluation. $700/hr, 30 hours.
+7. **Climate Modeling Expert** - ESG-focused AI needs atmospheric scientist. $500/hr, 25 hours.
+8. **Neuroscience Dataset Curation** - Neurotech startup needs neuroscientist for brain imaging data. $750/hr, 35 hours.
+
+## Design Specifications
+
+- **Color palette:** Deep navy (`#1a1f36`) primary, electric blue (`#4F46E5`) accent, white backgrounds, gray text
+- **Typography:** Inter or similar modern sans-serif
+- **Style:** Clean, professional, enterprise-grade - similar to Scale AI or Anthropic's aesthetic
+- **Spacing:** Generous whitespace, 8px grid system
+- **Cards:** Subtle shadows, rounded corners (8px), hover states
+
+## Technical Requirements
+
+- Single HTML file with embedded CSS and JavaScript
+- No external dependencies except Google Fonts
+- Fully responsive - must look good on mobile, tablet, and desktop
+- Mobile: Stack filters above content, cards go single column
+- Tablet: 2-column card grid
+- Desktop: Sidebar + 3-column card grid
+- Touch-friendly button sizes (minimum 44px tap targets)
+- Smooth hover animations on cards and buttons
+
+## Goal
+
+Let someone experience the core value prop in under 10 seconds: "Oh, I can browse bounties for rare expertise and see exactly what AI labs are paying for specialized knowledge."</code></pre>
         </div>
       </section>
 
