@@ -814,6 +814,62 @@ Start the session by asking me for my list of ideas.</code></pre>
         </div>
       </section>
 
+      <section class="example-section">
+        <h2>Example: Tax Strategist &amp; CPA Prompt</h2>
+        <p>This prompt structures an AI assistant as a tax strategist and CPA to help maximize deductions and minimize tax liability. It captures your full situation upfront and requests a comprehensive, step-by-step action plan—including checklists, document requirements, scenario modeling, and practical guidance on whether to hire a CPA or use software.</p>
+
+        <div class="prompt-container">
+          <div class="prompt-header">
+            <span class="prompt-label">Tax Strategist &amp; CPA Prompt Template</span>
+          </div>
+          <pre class="prompt-content"><code>You are a tax strategist and CPA specializing in [INDIVIDUAL/BUSINESS] taxes.
+
+Help me maximize deductions and minimize tax liability for [TAX YEAR] (e.g., 2024). If we're past the filing deadline, focus on strategies I can still implement; if we're before year-end, include any last-minute opportunities.
+
+MY SITUATION
+
+- Income sources: [W-2 / 1099 / Business income / Investments / Other]
+- Filing status: [Single / Married Filing Jointly / Married Filing Separately / Head of Household / Qualifying Surviving Spouse]
+- State: [YOUR STATE]
+- Dependents: [NUMBER]
+- Special situations: [Stock options / RSUs / Crypto / Rental property / Home office / Side gig / Self-employment / Retirement contributions / HSA / Student loans / Other—list any that apply]
+
+FINANCIAL OVERVIEW (optional but improves estimates)
+
+- Rough income: [ANNUAL INCOME RANGE]
+- Major expenses: [MORTGAGE, CHARITABLE, MEDICAL, etc.]
+- Investments: [RETIREMENT ACCOUNTS, BROKERAGE, REAL ESTATE]
+
+DELIVERABLES
+
+Provide a step-by-step action plan including:
+
+1. Checklist of all possible deductions I might qualify for
+2. Documents I need to gather before filing
+3. Common mistakes to avoid for my situation
+4. Estimated tax liability under different scenarios (e.g., standard vs. itemized, with/without certain deductions)
+5. Tax-saving strategies I can still implement (given current timing)
+6. Whether I need a CPA or can use tax software—and why
+7. Quarterly estimated tax recommendations (if applicable)
+8. State-specific considerations for [YOUR STATE]
+
+Format your response as a clear, numbered action plan I can follow.</code></pre>
+        </div>
+
+        <div class="prompt-analysis">
+          <h3>Why This Prompt Works</h3>
+          <ul>
+            <li><strong>Role Specialization:</strong> Specifies individual vs. business tax focus so the AI tailors advice appropriately</li>
+            <li><strong>Comprehensive Situation Capture:</strong> Puts all key variables (income, status, state, dependents, special situations) in one place for accurate guidance</li>
+            <li><strong>Actionable Deliverables:</strong> Requests a checklist, document list, strategies, and recommendations—not just general advice</li>
+            <li><strong>Scenario Modeling:</strong> Asks for estimated liability across different scenarios to support informed decisions</li>
+            <li><strong>Practical Guidance:</strong> Includes CPA vs. software recommendation, quarterly estimates, and state-specific considerations</li>
+            <li><strong>Deadline Awareness:</strong> Instructs the AI to adjust advice based on whether it's pre- or post-filing, maximizing relevance</li>
+            <li><strong>Structured Output:</strong> Requests a step-by-step action plan to reduce overwhelm and make the response immediately usable</li>
+          </ul>
+        </div>
+      </section>
+
       <section class="tips-section">
         <h2>Prompt Engineering Best Practices</h2>
         <div class="tips-grid">
