@@ -1,9 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('ai-engineering');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 
 const baseUrl = import.meta.env.BASE_URL;
-// Ensure baseUrl ends with a slash for proper URL construction
 const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 ---
 
@@ -17,17 +28,13 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
         </svg>
         Back to AI Engineering
       </a>
-      <h1>Insights</h1>
-      <p class="subtitle">Reflections and observations from working with AI systems</p>
+      <h1>{entry.data.title}</h1>
+      {entry.data.subtitle && <p class="subtitle">{entry.data.subtitle}</p>}
     </header>
 
-    <div class="content-placeholder">
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 20h9"></path>
-        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-      </svg>
-      <p>Content coming soon. This section will share insights and lessons learned from AI engineering work.</p>
-    </div>
+    <article class="content">
+      <Content />
+    </article>
   </div>
 </Layout>
 
@@ -71,7 +78,43 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
     margin: 0;
   }
 
-  .content-placeholder {
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content :global(h2) {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .content :global(p) {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+  }
+
+  .content :global(ul) {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .content :global(li) {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+
+  .content :global(.content-placeholder) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,17 +127,6 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
     color: #6b7280;
   }
 
-  .content-placeholder svg {
-    margin-bottom: 1.5rem;
-    opacity: 0.5;
-  }
-
-  .content-placeholder p {
-    max-width: 500px;
-    line-height: 1.6;
-    margin: 0;
-  }
-
   @media screen and (max-width: 768px) {
     .container {
       padding: 2rem 1rem;
@@ -104,8 +136,8 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
       font-size: 2rem;
     }
 
-    .content-placeholder {
-      padding: 3rem 1.5rem;
+    .subtitle {
+      font-size: 1rem;
     }
   }
 </style>

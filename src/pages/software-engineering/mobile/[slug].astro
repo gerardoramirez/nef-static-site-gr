@@ -1,0 +1,173 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('software-engineering');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>{entry.data.title}</h1>
+        {entry.data.subtitle && <p class="subtitle">{entry.data.subtitle}</p>}
+      </header>
+
+      <div class="chapter-content">
+        <Content />
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2.5rem 0 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .chapter-content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content :global(h4) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .chapter-content :global(p) {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content :global(ul),
+  .chapter-content :global(ol) {
+    margin: 1rem 0 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content :global(li) {
+    margin: 0.75rem 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .chapter-content :global(code) {
+    background: #f3f4f6;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    color: #dc2626;
+  }
+
+  .chapter-content :global(pre) {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .chapter-content :global(pre code) {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .chapter-content :global(a) {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+
+  .chapter-content :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .chapter-content :global(h2) {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content :global(h3) {
+      font-size: 1.25rem;
+    }
+
+    .chapter-content :global(p),
+    .chapter-content :global(li) {
+      font-size: 1rem;
+    }
+
+    .chapter-content :global(pre) {
+      font-size: 0.875rem;
+      padding: 1rem;
+    }
+  }
+</style>

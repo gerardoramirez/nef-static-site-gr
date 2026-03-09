@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('security');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+
+const allChapters = (await getCollection('security')).sort(
+  (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999)
+);
+const currentIndex = allChapters.findIndex((e) => e.slug === entry.slug);
+const prevEntry = currentIndex > 0 ? allChapters[currentIndex - 1] : null;
+const nextEntry = currentIndex >= 0 && currentIndex < allChapters.length - 1 ? allChapters[currentIndex + 1] : null;
+---
+
+<Layout>
+  <Navigation />
+  <div class="container">
+    <article class="chapter">
+      <header class="chapter-header">
+        <h1>{entry.data.title}</h1>
+      </header>
+
+      <div class="chapter-content">
+        <Content />
+      </div>
+
+      <ChapterNav
+        previous={prevEntry ? { title: prevEntry.data.title, href: `${base}security/${prevEntry.slug}` } : undefined}
+        next={nextEntry ? { title: nextEntry.data.title, href: `${base}security/${nextEntry.slug}` } : undefined}
+      />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .chapter-content {
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .chapter-content :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 2rem 0 1rem;
+  }
+
+  .chapter-content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .chapter-content :global(p) {
+    margin: 0 0 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content :global(ul) {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .chapter-content :global(li) {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  .chapter-content :global(blockquote) {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2rem 1rem;
+    }
+
+    .chapter-header h1 {
+      font-size: 2rem;
+    }
+
+    .chapter-content :global(h2) {
+      font-size: 1.5rem;
+    }
+
+    .chapter-content :global(p) {
+      font-size: 1rem;
+    }
+  }
+</style>
