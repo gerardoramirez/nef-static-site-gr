@@ -17,6 +17,7 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 				<a href={`${base}ai-engineering`} class="btn-primary">Explore AI Engineering</a>
 				<a href={`${base}software-engineering`} class="btn-primary">Software Engineering</a>
 				<a href={`${base}security`} class="btn-primary">Security & mTLS</a>
+				<a href={`${base}enterprise`} class="btn-primary btn-enterprise">Enterprise AI</a>
 			</div>
 		</div>
 	</div>
@@ -75,6 +76,16 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 		background: #2563eb;
 		transform: translateY(-2px);
 		box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+	}
+
+	.btn-enterprise {
+		background: #10b981;
+		box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+	}
+
+	.btn-enterprise:hover {
+		background: #059669;
+		box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
 	}
 
 	@media screen and (max-width: 768px) {

@@ -15,6 +15,12 @@ const softwareEngineeringSchema = z.object({
   subtitle: z.string().optional(),
 });
 
+const enterpriseSchema = z.object({
+  title: z.string(),
+  subtitle: z.string().optional(),
+  order: z.number().optional(),
+});
+
 export const collections = {
   security: defineCollection({
     type: 'content',
@@ -27,5 +33,9 @@ export const collections = {
   'software-engineering': defineCollection({
     type: 'content',
     schema: softwareEngineeringSchema,
+  }),
+  enterprise: defineCollection({
+    type: 'content',
+    schema: enterpriseSchema,
   }),
 };
