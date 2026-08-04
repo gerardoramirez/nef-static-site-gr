@@ -4,8 +4,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://gerardoramirez.github.io',
-  // Base path for GitHub Pages deployment
-  // For local dev: comment out or set to '/'
-  // For production: uncomment and set to '/nef-static-site-gr' (no trailing slash)
-  base: '/nef-static-site-gr',
+  // For local development, use '/'
+  // For GitHub Pages deployment, change to '/nef-static-site-gr'
+  base: '/',
 });
