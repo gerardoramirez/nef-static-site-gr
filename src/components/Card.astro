@@ -1,0 +1,204 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  href?: string;
+  image?: string;
+  tags?: string[];
+  metadata?: {
+    date?: Date;
+    role?: string;
+    status?: string;
+  };
+}
+
+const { title, description, href = '#', image, tags = [], metadata } = Astro.props;
+---
+
+<article class="card" class:list={{ "card--with-image": image }}>
+  {image && (
+    <div class="card-image">
+      <img src={image} alt={title} />
+    </div>
+  )}
+  
+  <div class="card-content">
+    <h3 class="card-title">
+      <a href={href}>{title}</a>
+    </h3>
+    
+    {description && (
+      <p class="card-description">{description}</p>
+    )}
+    
+    {metadata && (
+      <div class="card-metadata">
+        {metadata.date && (
+          <span class="metadata-item">
+            {new Date(metadata.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+          </span>
+        )}
+        {metadata.role && (
+          <span class="metadata-item">{metadata.role}</span>
+        )}
+        {metadata.status && (
+          <span class="metadata-item status" class:list={[`status--${metadata.status}`]}>
+            {metadata.status}
+          </span>
+        )}
+      </div>
+    )}
+    
+    {tags && tags.length > 0 && (
+      <div class="card-tags">
+        {tags.map(tag => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    )}
+    
+    {href && (
+      <a href={href} class="card-link">Read more →</a>
+    )}
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+  
+  .card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: var(--color-surface);
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .card-image img {
+    transform: scale(1.05);
+  }
+  
+  .card-content {
+    flex: 1;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-title {
+    margin: 0 0 var(--space-sm) 0;
+    font-size: 1.1rem;
+  }
+  
+  .card-title a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .card-title a:hover {
+    color: var(--color-accent);
+  }
+  
+  .card-description {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 var(--space-md) 0;
+    flex-grow: 1;
+  }
+  
+  .card-metadata {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  
+  .metadata-item {
+    display: inline-block;
+  }
+  
+  .status {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--color-surface);
+    border-radius: 0.25rem;
+    text-transform: capitalize;
+  }
+  
+  .status--shipped {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  
+  .status--active {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  
+  .status--in-progress {
+    background-color: #fef08a;
+    color: #713f12;
+  }
+  
+  .status--proposed {
+    background-color: #e0e7ff;
+    color: #3730a3;
+  }
+  
+  .card-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-surface);
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: lowercase;
+  }
+  
+  .card-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.2s;
+  }
+  
+  .card-link:hover {
+    text-decoration: underline;
+  }
+  
+  .card--with-image {
+    background-color: var(--color-surface);
+  }
+</style>

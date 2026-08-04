@@ -1,0 +1,31 @@
+---
+import Layout from './Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const { title, description, image, canonical } = Astro.props;
+---
+
+<Layout {title} {description} {image} {canonical}>
+  <Navigation />
+  <main class="page-container">
+    <slot />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-container {
+    min-height: calc(100vh - 80px - 200px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+  }
+</style>
