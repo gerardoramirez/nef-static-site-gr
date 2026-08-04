@@ -1,0 +1,81 @@
+---
+interface Props {
+  date?: Date;
+  author?: string;
+  tags?: string[];
+  readingTime?: string;
+}
+
+const { date, author = 'Gerardo Ramirez', tags = [], readingTime } = Astro.props;
+
+const formatDate = (d: Date) => {
+  return new Date(d).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+---
+
+<div class="metadata">
+  {author && <span class="author">By {author}</span>}
+  {date && <span class="date">{formatDate(date)}</span>}
+  {readingTime && <span class="reading-time">{readingTime}</span>}
+  {tags && tags.length > 0 && (
+    <div class="tags">
+      {tags.map(tag => (
+        <a href={`/writing?tag=${encodeURIComponent(tag)}`} class="tag">#{tag}</a>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .author,
+  .date,
+  .reading-time {
+    display: inline-block;
+  }
+  
+  .author::after {
+    content: ' •';
+    margin-left: var(--space-sm);
+  }
+  
+  .date::after {
+    content: ' •';
+    margin-left: var(--space-sm);
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-surface);
+    border-radius: 0.25rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .tag:hover {
+    background-color: var(--color-accent);
+    color: white;
+  }
+</style>

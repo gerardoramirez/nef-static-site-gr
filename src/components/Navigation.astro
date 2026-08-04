@@ -1,17 +1,12 @@
 ---
 const currentPath = Astro.url.pathname;
 const baseUrl = import.meta.env.BASE_URL;
-// Ensure baseUrl ends with a slash for proper URL construction
 const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
-// Helper to get path without base URL for comparison
-// BASE_URL is always '/' when base is not set, or '/path/' when base is set
 const getPathWithoutBase = (path: string) => {
-  // If baseUrl is just '/', there's no base path to remove
   if (baseUrl === '/') {
     return path;
   }
-  // Remove trailing slash from base and check if path starts with it
   const baseWithoutSlash = baseUrl.replace(/\/$/, '');
   if (baseWithoutSlash && path.startsWith(baseWithoutSlash)) {
     const withoutBase = path.slice(baseWithoutSlash.length) || '/';
@@ -23,60 +18,66 @@ const getPathWithoutBase = (path: string) => {
 const pathForComparison = getPathWithoutBase(currentPath);
 ---
 
-<nav>
+<nav class="navigation">
   <div class="nav-container">
-    <a href={base} class="logo">No Esta Facil</a>
+    <a href={base} class="logo">Gerardo Ramirez</a>
     <ul class="nav-links">
       <li><a href={base} class={pathForComparison === '/' ? 'active' : ''}>Home</a></li>
-      <li><a href={`${base}ai-engineering`} class={pathForComparison.startsWith('/ai-engineering') ? 'active' : ''}>AI Engineering</a></li>
-      <li><a href={`${base}software-engineering`} class={pathForComparison.startsWith('/software-engineering') ? 'active' : ''}>Software Engineering</a></li>
-      <li><a href={`${base}security`} class={pathForComparison.startsWith('/security') ? 'active' : ''}>Security</a></li>
-      <li><a href={`${base}enterprise`} class={pathForComparison.startsWith('/enterprise') ? 'active' : ''}>Enterprise AI</a></li>
+      <li><a href={`${base}work`} class={pathForComparison.startsWith('/work') ? 'active' : ''}>Work</a></li>
+      <li><a href={`${base}products`} class={pathForComparison.startsWith('/products') ? 'active' : ''}>Products</a></li>
+      <li><a href={`${base}writing`} class={pathForComparison.startsWith('/writing') ? 'active' : ''}>Writing</a></li>
+      <li><a href={`${base}speaking`} class={pathForComparison.startsWith('/speaking') ? 'active' : ''}>Speaking</a></li>
     </ul>
+    <a href={`${base}contact`} class="nav-cta">Get in touch</a>
   </div>
 </nav>
 
 <style>
-  nav {
+  .navigation {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 100;
+    height: 80px;
   }
 
   .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #111827;
+    color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s;
+    white-space: nowrap;
   }
 
   .logo:hover {
-    color: #3b82f6;
+    color: var(--color-accent);
   }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     list-style: none;
     margin: 0;
     padding: 0;
+    flex: 1;
+    justify-content: center;
   }
 
   .nav-links a {
-    color: #4b5563;
+    color: var(--color-text-muted);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
@@ -85,25 +86,55 @@ const pathForComparison = getPathWithoutBase(currentPath);
   }
 
   .nav-links a:hover {
-    color: #111827;
+    color: var(--color-text);
   }
 
   .nav-links a.active {
-    color: #3b82f6;
-    border-bottom-color: #3b82f6;
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
   }
 
-  @media screen and (max-width: 768px) {
+  .nav-cta {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover {
+    background-color: #0284c7;
+  }
+
+  @media (max-width: 1024px) {
     .nav-container {
       padding: 1rem;
     }
 
     .nav-links {
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .logo {
+      font-size: 1rem;
     }
   }
 </style>
+

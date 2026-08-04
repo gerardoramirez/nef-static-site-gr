@@ -1,105 +1,306 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import CardGrid from '../components/CardGrid.astro';
+import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+// Get featured content
+const workItems = await getCollection('work');
+const products = await getCollection('products');
+const writing = await getCollection('writing');
+
+// Sort by date (most recent first)
+const sortByDate = (a: any, b: any) => {
+  const dateA = a.data.date || new Date(0);
+  const dateB = b.data.date || new Date(0);
+  return dateB.getTime() - dateA.getTime();
+};
+
+const featuredWork = workItems.sort(sortByDate).slice(0, 3);
+const featuredProducts = products.slice(0, 2);
+const recentWriting = writing.sort(sortByDate).slice(0, 3);
 
 const baseUrl = import.meta.env.BASE_URL;
-// Ensure baseUrl ends with a slash for proper URL construction
 const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 ---
 
-<Layout>
-	<Navigation />
-	<div class="hero">
-		<div class="hero-content">
-			<h1>No Esta Facil</h1>
-			<p class="tagline">Exploring AI Engineering and Software Development</p>
-			<div class="cta-buttons">
-				<a href={`${base}ai-engineering`} class="btn-primary">Explore AI Engineering</a>
-				<a href={`${base}software-engineering`} class="btn-primary">Software Engineering</a>
-				<a href={`${base}security`} class="btn-primary">Security & mTLS</a>
-				<a href={`${base}enterprise`} class="btn-primary btn-enterprise">Enterprise AI</a>
-			</div>
-		</div>
-	</div>
+<Layout
+  title="Gerardo Ramirez - Solutions Engineer, Architect, Builder"
+  description="Transforming complex technical and human problems into practical software experiences. Building software that helps people perform, remember, and connect."
+  canonical={`${base}`}
+>
+  <Navigation />
+  
+  <!-- Hero Section -->
+  <Hero>
+    <h1 style="margin-bottom: 1rem; font-size: 3.5rem;">
+      Building software that helps people perform, remember, and connect.
+    </h1>
+    <p style="font-size: 1.25rem; color: var(--color-text-muted); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+      I'm a senior solutions engineer, software architect, and product builder who transforms complex technical and human problems into practical software experiences.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href={`${base}work`} class="btn-primary">View my work</a>
+      <a href={`${base}contact`} class="btn-secondary">Get in touch</a>
+    </div>
+  </Hero>
+
+  <!-- Expertise Section -->
+  <section class="expertise-section">
+    <div class="container">
+      <h2>What I do</h2>
+      <p class="section-intro">
+        I work across enterprise integrations, partner engineering, product architecture, mobile applications, applied AI, developer experience, and early-stage SaaS products.
+      </p>
+      
+      <div class="expertise-grid">
+        <div class="expertise-item">
+          <h3>Enterprise Integrations</h3>
+          <p>Designing and implementing complex integration platforms that connect systems and teams at scale.</p>
+        </div>
+        <div class="expertise-item">
+          <h3>Architecture & Systems</h3>
+          <p>Building resilient, scalable systems that solve real business problems and adapt to changing requirements.</p>
+        </div>
+        <div class="expertise-item">
+          <h3>Product Leadership</h3>
+          <p>Bridging technical and product thinking to deliver experiences that users love.</p>
+        </div>
+        <div class="expertise-item">
+          <h3>AI & Automation</h3>
+          <p>Applying AI responsibly to solve real problems, from prototypes to production systems.</p>
+        </div>
+        <div class="expertise-item">
+          <h3>Developer Experience</h3>
+          <p>Creating tools, platforms, and workflows that make engineering teams more productive.</p>
+        </div>
+        <div class="expertise-item">
+          <h3>Early-stage Products</h3>
+          <p>Building from ambiguity to implementation. From concept to shipped product.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  {featuredWork.length > 0 && (
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Work</h2>
+          <p>Case studies and projects that showcase my approach to solving complex problems.</p>
+          <a href={`${base}work`} class="view-all">View all work →</a>
+        </div>
+        
+        <CardGrid columns={3}>
+          {featuredWork.map((item) => (
+            <Card
+              title={item.data.title}
+              description={item.data.description}
+              href={`${base}work/${item.slug}`}
+              tags={item.data.tags}
+              metadata={{
+                date: item.data.date,
+                role: item.data.role,
+                status: item.data.status,
+              }}
+            />
+          ))}
+        </CardGrid>
+      </div>
+    </section>
+  )}
+
+  <!-- Featured Products -->
+  {featuredProducts.length > 0 && (
+    <section class="featured-section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <h2>Building Products</h2>
+          <p>Products and projects that I'm actively building or maintaining.</p>
+          <a href={`${base}products`} class="view-all">View all products →</a>
+        </div>
+        
+        <CardGrid columns={2}>
+          {featuredProducts.map((product) => (
+            <Card
+              title={product.data.title}
+              description={product.data.description || product.data.tagline}
+              href={product.data.url || `${base}products/${product.slug}`}
+              image={product.data.image}
+              tags={product.data.tags}
+              metadata={{
+                status: product.data.status,
+              }}
+            />
+          ))}
+        </CardGrid>
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Writing -->
+  {recentWriting.length > 0 && (
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Latest Thinking</h2>
+          <p>Articles and essays on systems, architecture, product, and leadership.</p>
+          <a href={`${base}writing`} class="view-all">View all writing →</a>
+        </div>
+        
+        <CardGrid columns={3}>
+          {recentWriting.map((article) => (
+            <Card
+              title={article.data.title}
+              description={article.data.description}
+              href={`${base}writing/${article.slug}`}
+              tags={article.data.tags}
+              metadata={{
+                date: article.data.date,
+              }}
+            />
+          ))}
+        </CardGrid>
+      </div>
+    </section>
+  )}
+
+  <!-- Speaking Section -->
+  <section class="featured-section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Speaking</h2>
+        <p>I speak at conferences about AI engineering, architecture, product, and leadership.</p>
+        <a href={`${base}speaking`} class="view-all">View speaking topics →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to work together?</h2>
+      <p>I'm available for consulting, advisory work, speaking engagements, and long-term partnerships.</p>
+      <a href={`${base}contact`} class="btn-primary btn-large">Get in touch</a>
+    </div>
+  </section>
+
+  <Footer />
 </Layout>
 
 <style>
-	.hero {
-		min-height: calc(100vh - 80px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-		padding: 2rem;
-	}
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+  }
 
-	.hero-content {
-		text-align: center;
-		max-width: 800px;
-	}
+  /* Expertise Section */
+  .expertise-section {
+    padding: var(--space-2xl) var(--space-lg);
+    background-color: var(--color-background);
+  }
 
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		color: #111827;
-		margin: 0 0 1rem;
-		line-height: 1.2;
-	}
+  .expertise-section h2 {
+    margin-bottom: var(--space-md);
+  }
 
-	.tagline {
-		font-size: 1.5rem;
-		color: #4b5563;
-		margin: 0 0 2.5rem;
-	}
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin-bottom: var(--space-2xl);
+  }
 
-	.cta-buttons {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+  }
 
-	.btn-primary {
-		display: inline-block;
-		padding: 1rem 2rem;
-		background: #3b82f6;
-		color: white;
-		text-decoration: none;
-		border-radius: 8px;
-		font-weight: 600;
-		font-size: 1.125rem;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
-	}
+  .expertise-item h3 {
+    margin-bottom: var(--space-md);
+  }
 
-	.btn-primary:hover {
-		background: #2563eb;
-		transform: translateY(-2px);
-		box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
-	}
+  .expertise-item p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
 
-	.btn-enterprise {
-		background: #10b981;
-		box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
-	}
+  /* Featured Sections */
+  .featured-section {
+    padding: var(--space-2xl) var(--space-lg);
+  }
 
-	.btn-enterprise:hover {
-		background: #059669;
-		box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
-	}
+  .featured-section.bg-light {
+    background-color: var(--color-surface);
+  }
 
-	@media screen and (max-width: 768px) {
-		h1 {
-			font-size: 2.5rem;
-		}
+  .section-header {
+    margin-bottom: var(--space-xl);
+  }
 
-		.tagline {
-			font-size: 1.25rem;
-		}
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
 
-		.btn-primary {
-			font-size: 1rem;
-			padding: 0.875rem 1.5rem;
-		}
-	}
+  .section-header p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .view-all {
+    display: inline-block;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .view-all:hover {
+    opacity: 0.8;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: var(--space-2xl) var(--space-lg);
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    margin-bottom: var(--space-md);
+    color: white;
+  }
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .expertise-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
 </style>
