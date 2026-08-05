@@ -46,14 +46,19 @@ const {
 
 <style is:global>
 	:root {
-		/* Colors */
-		--color-primary: #1f2937;
-		--color-accent: #0ea5e9;
-		--color-text: #111827;
-		--color-text-muted: #6b7280;
+		/* Colors - Refined Palette */
+		--color-primary: #0f172a;
+		--color-secondary: #1e293b;
+		--color-accent: #0284c7;
+		--color-accent-hover: #0369a1;
+		--color-text: #0f172a;
+		--color-text-muted: #64748b;
+		--color-text-light: #94a3b8;
 		--color-background: #ffffff;
-		--color-surface: #f9fafb;
-		--color-border: #e5e7eb;
+		--color-surface: #f8fafc;
+		--color-surface-alt: #f1f5f9;
+		--color-border: #e2e8f0;
+		--color-border-light: #cbd5e1;
 		
 		/* Typography */
 		--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -83,6 +88,7 @@ const {
 		line-height: 1.6;
 		color: var(--color-text);
 		background-color: var(--color-background);
+		font-size: 15px;
 	}
 
 	* {
@@ -90,37 +96,47 @@ const {
 	}
 	
 	h1, h2, h3, h4, h5, h6 {
-		line-height: 1.2;
+		line-height: 1.3;
 		margin-top: 0;
-	}
-	
-	h1 {
-		font-size: 2.5rem;
-		font-weight: 700;
-	}
-	
-	h2 {
-		font-size: 2rem;
+		letter-spacing: -0.015em;
 		font-weight: 600;
 	}
 	
-	h3 {
+	h1 {
+		font-size: 1.875rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+	
+	h2 {
 		font-size: 1.5rem;
+		font-weight: 650;
+	}
+	
+	h3 {
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+	
+	h4 {
+		font-size: 1rem;
 		font-weight: 600;
 	}
 	
 	p {
 		margin: 0;
+		line-height: 1.65;
+		letter-spacing: -0.005em;
 	}
 	
 	a {
 		color: var(--color-accent);
 		text-decoration: none;
-		transition: opacity 0.2s ease;
+		transition: color 0.2s ease;
 	}
 	
 	a:hover {
-		opacity: 0.8;
+		color: var(--color-accent-hover);
 	}
 	
 	button, .btn {
@@ -130,8 +146,9 @@ const {
 		cursor: pointer;
 		transition: all 0.2s ease;
 		font-weight: 500;
-		padding: 0.75rem 1.5rem;
-		font-size: 1rem;
+		padding: 0.625rem 1.25rem;
+		font-size: 0.95rem;
+		letter-spacing: -0.005em;
 	}
 	
 	.btn-primary {
@@ -140,7 +157,7 @@ const {
 	}
 	
 	.btn-primary:hover {
-		background-color: #0284c7;
+		background-color: var(--color-accent-hover);
 	}
 	
 	.btn-secondary {
@@ -150,6 +167,7 @@ const {
 	}
 	
 	.btn-secondary:hover {
-		background-color: var(--color-border);
+		background-color: var(--color-surface-alt);
+		border-color: var(--color-border-light);
 	}
 </style>

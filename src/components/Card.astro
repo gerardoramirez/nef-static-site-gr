@@ -108,25 +108,27 @@ const { title, description, href = '#', image, tags = [], metadata } = Astro.pro
   
   .card-title {
     margin: 0 0 var(--space-sm) 0;
-    font-size: 1.1rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
   }
-  
+
   .card-title a {
     color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s;
   }
-  
+
   .card-title a:hover {
     color: var(--color-accent);
   }
-  
+
   .card-description {
     color: var(--color-text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 0.9375rem;
+    line-height: 1.6;
     margin: 0 0 var(--space-md) 0;
     flex-grow: 1;
+    letter-spacing: -0.005em;
   }
   
   .card-metadata {
@@ -134,8 +136,9 @@ const { title, description, href = '#', image, tags = [], metadata } = Astro.pro
     gap: var(--space-md);
     margin-bottom: var(--space-md);
     flex-wrap: wrap;
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
+    letter-spacing: -0.005em;
   }
   
   .metadata-item {
@@ -181,10 +184,11 @@ const { title, description, href = '#', image, tags = [], metadata } = Astro.pro
     padding: 0.25rem 0.75rem;
     background-color: var(--color-surface);
     border-radius: 0.25rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--color-text-muted);
     text-transform: lowercase;
+    letter-spacing: -0.005em;
   }
   
   .card-link {
