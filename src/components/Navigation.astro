@@ -20,7 +20,14 @@ const pathForComparison = getPathWithoutBase(currentPath);
 
 <nav class="navigation">
   <div class="nav-container">
-    <a href={base} class="logo">Gerardo Ramirez</a>
+    <a href={base} class="logo" aria-label="Gerardo Ramirez home">
+      <img
+        src={`${base}logo.svg`}
+        alt="Gerardo Ramirez professional logo featuring a circular GR monogram"
+        width="200"
+        height="50"
+      />
+    </a>
     <ul class="nav-links">
       <li><a href={base} class={pathForComparison === '/' ? 'active' : ''}>Home</a></li>
       <li><a href={`${base}work`} class={pathForComparison.startsWith('/work') ? 'active' : ''}>Work</a></li>
@@ -54,17 +61,22 @@ const pathForComparison = getPathWithoutBase(currentPath);
   }
 
   .logo {
-    font-size: 1.1875rem;
-    font-weight: 700;
-    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
     text-decoration: none;
-    transition: color 0.2s;
-    white-space: nowrap;
-    letter-spacing: -0.015em;
+    line-height: 0;
+    transition: opacity 0.2s;
+  }
+
+  .logo img {
+    display: block;
+    height: 48px;
+    width: auto;
   }
 
   .logo:hover {
-    color: var(--color-accent);
+    opacity: 0.75;
   }
 
   .nav-links {
@@ -122,8 +134,8 @@ const pathForComparison = getPathWithoutBase(currentPath);
       gap: 1.5rem;
     }
 
-    .logo {
-      font-size: 1.1rem;
+    .logo img {
+      height: 42px;
     }
 
     .nav-cta {
@@ -137,8 +149,8 @@ const pathForComparison = getPathWithoutBase(currentPath);
       font-size: 0.9rem;
     }
 
-    .logo {
-      font-size: 1rem;
+    .logo img {
+      height: 36px;
     }
   }
 </style>
