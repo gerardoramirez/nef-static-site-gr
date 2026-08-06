@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Gerardo Ramirez</title>
+  <desc id="logoDesc">Professional logo featuring a circular GR monogram</desc>
+
+  <g transform="translate(70 70)">
+    <!-- Circle with gaps at top and bottom for fret accents -->
+    <path
+      d="M 14 -48 A 50 50 0 0 1 14 48"
+      fill="none"
+      stroke="#0f172a"
+      stroke-width="3.5"
+      stroke-linecap="butt"
+    />
+    <path
+      d="M -14 48 A 50 50 0 0 1 -14 -48"
+      fill="none"
+      stroke="#0f172a"
+      stroke-width="3.5"
+      stroke-linecap="butt"
+    />
+
+    <!-- Top fret accent: two interlocking brackets -->
+    <g fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter">
+      <polyline points="-16,-52 -16,-58 -6,-58 -6,-52" />
+      <polyline points="-10,-52 -10,-46 -2,-46 -2,-52" />
+      <polyline points="16,-52 16,-58 6,-58 6,-52" />
+      <polyline points="10,-52 10,-46 2,-46 2,-52" />
+    </g>
+
+    <!-- Bottom fret accent: mirrored -->
+    <g fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter">
+      <polyline points="-16,52 -16,58 -6,58 -6,52" />
+      <polyline points="-10,52 -10,46 -2,46 -2,52" />
+      <polyline points="16,52 16,58 6,58 6,52" />
+      <polyline points="10,52 10,46 2,46 2,52" />
+    </g>
+
+    <!-- Shared-spine GR monogram -->
+    <g fill="none" stroke="#0f172a" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round">
+      <path d="M0 -27 V27" />
+      <path d="M0 -27 C-19 -27 -30 -15 -30 0 C-30 15 -19 27 0 27 C7 27 12 24 15 20" />
+      <path d="M0 0 H15" />
+      <path d="M0 -27 C19 -27 30 -17 30 -7 C30 3 19 11 0 11" />
+      <path d="M11 11 L30 27" />
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <g fill="#0f172a" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="500">
+    <text x="155" y="62" font-size="32" letter-spacing="0.28em">GERARDO</text>
+    <text x="155" y="104" font-size="32" letter-spacing="0.28em">RAMIREZ</text>
+  </g>
+</svg>
