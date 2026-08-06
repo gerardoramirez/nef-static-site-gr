@@ -5,14 +5,14 @@
   <g transform="translate(70 70)">
     <!-- Circle with gaps at top and bottom for fret accents -->
     <path
-      d="M 14 -48 A 50 50 0 1 1 -14 -48"
+      d="M 14 -48 A 50 50 0 0 1 14 48"
       fill="none"
       stroke="#0f172a"
       stroke-width="3.5"
       stroke-linecap="butt"
     />
     <path
-      d="M -14 48 A 50 50 0 1 1 14 48"
+      d="M -14 48 A 50 50 0 0 1 -14 -48"
       fill="none"
       stroke="#0f172a"
       stroke-width="3.5"
