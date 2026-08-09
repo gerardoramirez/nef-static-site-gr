@@ -34,9 +34,9 @@ const formatDate = (d: Date) => {
   .metadata {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-md);
+    gap: 0.75rem;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: var(--color-text-muted);
     margin-bottom: var(--space-lg);
   }
@@ -47,35 +47,29 @@ const formatDate = (d: Date) => {
     display: inline-block;
   }
   
-  .author::after {
-    content: ' •';
-    margin-left: var(--space-sm);
-  }
-  
+  .author::after,
   .date::after {
-    content: ' •';
-    margin-left: var(--space-sm);
+    content: ' ·';
+    margin-left: 0.75rem;
+    color: var(--color-border-light);
   }
   
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: 0.5rem;
   }
   
   .tag {
     display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background-color: var(--color-surface);
-    border-radius: 0.25rem;
-    color: var(--color-text);
+    color: var(--color-text-muted);
     text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
+    font-weight: 400;
   }
   
   .tag:hover {
-    background-color: var(--color-accent);
-    color: white;
+    color: var(--color-accent);
+    text-decoration: underline;
   }
 </style>
+

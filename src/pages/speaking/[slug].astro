@@ -1,0 +1,35 @@
+---
+import CollectionDetailLayout from '../../layouts/CollectionDetailLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await getCollection('speaking');
+  return items.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<CollectionDetailLayout
+  title={item.data.title}
+  description={item.data.description}
+  date={item.data.date}
+  tags={item.data.tags}
+  canonical={`${base}speaking/${item.slug}`}
+>
+  {item.data.conference && <p><strong>Conference:</strong> {item.data.conference}</p>}
+  {(item.data.video_url || item.data.slides_url) && (
+    <p>
+      {item.data.video_url && <a href={item.data.video_url}>Watch video</a>}
+      {item.data.video_url && item.data.slides_url && ' · '}
+      {item.data.slides_url && <a href={item.data.slides_url}>Slides</a>}
+    </p>
+  )}
+  <Content />
+</CollectionDetailLayout>
