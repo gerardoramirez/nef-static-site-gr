@@ -32,10 +32,9 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
   <main class="page-content" aria-label="Content">
     <div class="wrapper prose">
       <header class="intro-header">
-        <h1 class="brand-title">Gerardo Ramirez</h1>
-        <p class="lede">
+        <h1 class="lede">
           Building software that helps people perform, remember, and connect.
-        </p>
+        </h1>
       </header>
 
       <div class="intro-body">
@@ -135,15 +134,13 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
     margin-bottom: var(--space-lg);
   }
 
-  .brand-title {
-    margin-bottom: 0.75rem;
-  }
-
   .lede {
-    font-size: 1.25rem;
-    color: var(--color-secondary);
+    font-size: 2.25rem;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--color-text);
     margin-bottom: 0;
-    max-width: 36em;
+    max-width: 18em;
   }
 
   .intro-body {
@@ -210,7 +207,7 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
   @media (max-width: 800px) {
     .lede {
-      font-size: 1.125rem;
+      font-size: 1.75rem;
     }
 
     .list-title {
