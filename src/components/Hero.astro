@@ -13,13 +13,16 @@ const {
   subtitle,
   cta_text,
   cta_href = '/',
-  background = 'linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)',
+  background,
   dark = false
 } = Astro.props;
 ---
 
-<section class="hero" style={`background: ${background}`} class:list={{ dark }}>
-  <div class="hero-content">
+<section
+  class:list={['hero', { dark }]}
+  style={background ? `background: ${background}` : undefined}
+>
+  <div class="hero-content wrapper">
     {title && <h1>{title}</h1>}
     {subtitle && <p class="hero-subtitle">{subtitle}</p>}
     <slot />
@@ -33,62 +36,45 @@ const {
 
 <style>
   .hero {
-    min-height: 55vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-xl) var(--space-lg);
+    padding: var(--space-xl) 0 var(--space-lg);
     border-bottom: 1px solid var(--color-border);
+    animation: fade-rise 0.7s ease both;
   }
   
   .hero-content {
-    max-width: 800px;
-    text-align: center;
+    max-width: var(--content-width);
   }
   
   .hero h1 {
-    margin-bottom: var(--space-md);
-    font-size: 2.125rem;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
   }
   
   .hero-subtitle {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-xl);
-    line-height: 1.65;
-    letter-spacing: -0.005em;
+    margin-bottom: var(--space-md);
+    max-width: 38em;
   }
   
   .hero-ctas {
     display: flex;
-    gap: var(--space-md);
-    justify-content: center;
-    margin-top: var(--space-xl);
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
   }
   
   .hero.dark {
-    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-    color: white;
+    background: linear-gradient(180deg, #1a1a1a 0%, #111111 100%);
+    color: #fdfdfd;
   }
   
   .hero.dark :global(a) {
-    color: var(--color-accent);
+    color: #9db4ff;
   }
   
   @media (max-width: 768px) {
     .hero {
-      min-height: auto;
-      padding: var(--space-lg) var(--space-md);
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 1rem;
+      padding: var(--space-lg) 0;
     }
   }
 </style>

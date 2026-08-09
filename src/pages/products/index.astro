@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('products')).filter((item) => !item.data.draft);
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout
+  title="Products | Gerardo Ramirez"
+  description="Products and projects in progress or actively maintained."
+  canonical={`${base}products`}
+>
+  <Navigation />
+  <main class="page-content">
+    <div class="wrapper">
+      <header class="page-header">
+        <h1>Products</h1>
+        <p>Products and projects I’m actively building or maintaining.</p>
+      </header>
+      <ul class="plain-list">
+        {items.map((item) => (
+          <li>
+            <a
+              href={item.data.url || `${base}products/${item.slug}`}
+              class="list-title"
+            >
+              {item.data.title}
+            </a>
+            {(item.data.description || item.data.tagline) && (
+              <p>{item.data.description || item.data.tagline}</p>
+            )}
+            {item.data.status && <p class="meta">{item.data.status}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-content { padding: var(--space-lg) 0 var(--space-xl); }
+  .wrapper { animation: fade-rise 0.7s ease both; }
+  .page-header { margin-bottom: var(--space-xl); }
+  .page-header p { color: var(--color-text-muted); max-width: 38em; }
+  .plain-list { list-style: none; margin: 0; padding: 0; }
+  .plain-list > li {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .list-title {
+    display: inline-block;
+    font-size: 1.35rem;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+  }
+  .list-title:visited { color: var(--color-text); }
+  .list-title:hover { color: var(--color-accent); }
+  .plain-list p { color: var(--color-text-muted); margin: 0 0 0.35rem; max-width: 40em; }
+  .meta { font-size: 0.875rem; text-transform: capitalize; }
+</style>

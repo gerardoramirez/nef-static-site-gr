@@ -16,16 +16,17 @@ const { title, description, image, canonical } = Astro.props;
 <Layout {title} {description} {image} {canonical}>
   <Navigation />
   <main class="page-container">
-    <slot />
+    <div class="wrapper">
+      <slot />
+    </div>
   </main>
   <Footer />
 </Layout>
 
 <style>
   .page-container {
-    min-height: calc(100vh - 80px - 200px);
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--space-lg);
+    min-height: calc(100vh - 56px - 180px);
+    padding: var(--space-lg) 0 var(--space-xl);
+    animation: fade-rise 0.7s ease both;
   }
 </style>

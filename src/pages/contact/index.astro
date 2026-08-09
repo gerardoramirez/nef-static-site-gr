@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout
+  title="Contact me | Gerardo Ramirez"
+  description="How to reach Gerardo Ramirez for consulting, advisory work, speaking, and collaboration."
+  canonical={`${base}contact`}
+>
+  <Navigation />
+
+  <main class="page-content" aria-label="Content">
+    <article class="wrapper post">
+      <header class="post-header">
+        <h1 class="post-title">Contact me</h1>
+      </header>
+
+      <div class="post-content">
+        <p>
+          Communication is easier when expectations are clear. This page is a short reference
+          for the best ways to reach me — not a rigid set of rules.
+        </p>
+
+        <h2>Email</h2>
+        <p>
+          The best way to reach me is via email.
+          I try to respond thoughtfully, especially for consulting, advisory work,
+          speaking invitations, and collaboration ideas.
+        </p>
+        <p>
+          If your note is long or non-urgent, I may take a few days.
+          If I haven’t replied in a week, feel free to follow up.
+        </p>
+        <p>
+          <a href="mailto:hello@gerardoramirez.info">hello@gerardoramirez.info</a>
+        </p>
+
+        <h2>What I’m open to</h2>
+        <p>I’m especially interested in conversations about:</p>
+        <ul>
+          <li>Enterprise integrations and partner engineering</li>
+          <li>Architecture reviews and technical strategy</li>
+          <li>Applied AI systems going from prototype to production</li>
+          <li>Early-stage product building and developer experience</li>
+          <li>Speaking and workshops on AI engineering, architecture, and leadership</li>
+        </ul>
+
+        <h2>Social media</h2>
+        <p>
+          I use social media lightly. You’re welcome to follow along, but email is still
+          the most reliable way to reach me.
+        </p>
+        <ul>
+          <li>
+            <strong>LinkedIn:</strong> useful for professional context; I prefer email for real conversations.
+          </li>
+          <li>
+            <strong>GitHub:</strong> best place to see what I’m building in public.
+          </li>
+          <li>
+            <strong>Twitter / X:</strong> I check it occasionally; please don’t rely on DMs.
+          </li>
+        </ul>
+        <p><em>tl;dr:</em> follow me where you like, but reach me via email.</p>
+
+        <h2>Scheduling</h2>
+        <p>
+          For scheduled calls or meetings, please send a calendar invite once we’ve agreed on a time.
+          A short agenda in the invite helps a lot.
+        </p>
+
+        <h2>A note</h2>
+        <p>
+          I’m systematic, but not inflexible. Some of the best collaborations start as informal,
+          open-ended conversations. If something interesting is on your mind, write.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-content {
+    padding: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .post {
+    animation: fade-rise 0.7s ease both;
+  }
+
+  .post-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .post-title {
+    margin-bottom: 0;
+  }
+
+  .post-content {
+    animation: fade-rise 0.75s ease 0.08s both;
+  }
+
+  .post-content :global(h2) {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.75rem;
+  }
+
+  .post-content :global(p),
+  .post-content :global(ul) {
+    margin-bottom: 1rem;
+    max-width: 40em;
+  }
+
+  .post-content :global(ul) {
+    padding-left: 1.5rem;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.45rem;
+  }
+
+  .post-content :global(strong) {
+    font-weight: 600;
+  }
+
+  @media (max-width: 800px) {
+    .post-content :global(h2) {
+      font-size: 1.5rem;
+    }
+  }
+</style>

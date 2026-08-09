@@ -14,20 +14,14 @@ const { columns = 3, gap = 'var(--space-lg)' } = Astro.props;
 <style>
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-template-columns: 1fr;
     gap: var(--grid-gap);
-    margin: var(--space-xl) 0;
+    margin: var(--space-lg) 0;
   }
-  
-  @media (max-width: 1024px) {
+
+  @media (min-width: 900px) {
     .card-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .card-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
     }
   }
 </style>

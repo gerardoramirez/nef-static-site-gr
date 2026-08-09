@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('writing'))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => {
+    const dateA = a.data.date || new Date(0);
+    const dateB = b.data.date || new Date(0);
+    return dateB.getTime() - dateA.getTime();
+  });
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout
+  title="Writing | Gerardo Ramirez"
+  description="Essays and notes on systems, architecture, product, and leadership."
+  canonical={`${base}writing`}
+>
+  <Navigation />
+  <main class="page-content">
+    <div class="wrapper">
+      <header class="page-header">
+        <h1>Writing</h1>
+        <p>Articles and essays on systems, architecture, product, and leadership.</p>
+      </header>
+      <ul class="plain-list">
+        {items.map((item) => (
+          <li>
+            <a href={`${base}writing/${item.slug}`} class="list-title">{item.data.title}</a>
+            {item.data.description && <p>{item.data.description}</p>}
+            {item.data.date && (
+              <p class="meta">
+                {new Date(item.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-content { padding: var(--space-lg) 0 var(--space-xl); }
+  .wrapper { animation: fade-rise 0.7s ease both; }
+  .page-header { margin-bottom: var(--space-xl); }
+  .page-header p { color: var(--color-text-muted); max-width: 38em; }
+  .plain-list { list-style: none; margin: 0; padding: 0; }
+  .plain-list > li {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .list-title {
+    display: inline-block;
+    font-size: 1.35rem;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+  }
+  .list-title:visited { color: var(--color-text); }
+  .list-title:hover { color: var(--color-accent); }
+  .plain-list p { color: var(--color-text-muted); margin: 0 0 0.35rem; max-width: 40em; }
+  .meta { font-size: 0.875rem; }
+</style>
