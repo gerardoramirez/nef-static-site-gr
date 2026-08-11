@@ -2,77 +2,321 @@
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import { getCollection } from 'astro:content';
-
-const items = (await getCollection('speaking'))
-  .filter((item) => !item.data.draft)
-  .sort((a, b) => {
-    const dateA = a.data.date || new Date(0);
-    const dateB = b.data.date || new Date(0);
-    return dateB.getTime() - dateA.getTime();
-  });
 
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+
+const talks = [
+  {
+    slug: 'human-truth-driven-design',
+    title: 'Human Truth Driven Design',
+    lede: 'What if we started with people instead of features?',
+    body: [
+      'As AI makes it dramatically easier to build software, our ability to create is beginning to outpace our ability to understand what should be created.',
+      'Human Truth Driven Design explores a different starting point.',
+      'Instead of moving directly from problem → feature, we begin by understanding the human truth underneath the problem and allow that truth to guide product principles, experiences, interactions, interfaces, and ultimately technology.',
+      'This talk explores how teams can use human truths as a foundation for making better product decisions.',
+    ],
+  },
+  {
+    slug: 'building-in-the-age-of-ai',
+    title: 'Building in the Age of AI',
+    lede: 'Building software is becoming easier. Building something meaningful isn’t.',
+    body: [
+      'AI is changing who can build software, how quickly ideas can become products, and what we expect from engineers and product teams.',
+      'But faster development doesn’t automatically produce better products.',
+      'I explore what happens when the cost of building approaches zero, why judgment and product thinking become increasingly valuable, and why understanding the people we build for may become one of the most important skills in technology.',
+    ],
+  },
+  {
+    slug: 'from-ambiguity-to-product',
+    title: 'From Ambiguity to Product',
+    lede: 'Some of the most interesting work begins when nobody quite knows what the answer is.',
+    body: [
+      'Throughout my career, I’ve worked on problems where requirements were incomplete, systems were complicated, teams had different perspectives, and the path forward had to be discovered.',
+      'This talk explores how to move from ambiguity to clarity by connecting customer needs, product thinking, architecture, and engineering.',
+      'It’s about learning to find the real problem before racing toward the solution.',
+    ],
+  },
+  {
+    slug: 'the-engineer-as-translator',
+    title: 'The Engineer as Translator',
+    lede: 'Great engineers don’t just understand systems. They help people understand each other.',
+    body: [
+      'Modern technology is built across boundaries: engineering and product, companies and partners, technical and nontechnical teams, customers and platforms.',
+      'Some of the most valuable people in those environments are the ones who can move between those worlds.',
+      'Drawing from my experience across software engineering, solutions engineering, product development, and education, I explore why communication, curiosity, and translation are increasingly important engineering skills.',
+    ],
+  },
+];
 ---
 
 <Layout
   title="Speaking | Gerardo Ramirez"
-  description="Talks and workshops on AI engineering, architecture, product, and leadership."
+  description="I speak about what happens when people, products, and technology collide."
   canonical={`${base}speaking`}
 >
   <Navigation />
-  <main class="page-content">
-    <div class="wrapper">
-      <header class="page-header">
+  <main class="page-content" aria-label="Speaking">
+    <div class="wrapper speaking">
+      <header class="hero">
         <h1>Speaking</h1>
-        <p>Talks and workshops on AI engineering, architecture, product, and leadership.</p>
+        <p class="hero-lede">
+          I speak about what happens when people, products, and technology collide.
+        </p>
+        <div class="hero-ctas">
+          <a href={`${base}contact`} class="btn-primary">Invite me to speak</a>
+          <a href="#speaker-bio" class="btn-secondary">Speaker bio ↓</a>
+        </div>
       </header>
-      <ul class="plain-list">
-        {items.map((item) => (
-          <li>
-            <a href={`${base}speaking/${item.slug}`} class="list-title">{item.data.title}</a>
-            {item.data.description && <p>{item.data.description}</p>}
-            <p class="meta">
-              {[
-                item.data.conference,
-                item.data.date && new Date(item.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }),
-                item.data.status,
-              ]
-                .filter(Boolean)
-                .join(' · ')}
-            </p>
-          </li>
+
+      <section class="intro" aria-label="Introduction">
+        <p>
+          I’ve spent my career moving between engineering, product, customers, classrooms,
+          and my own experiments as a builder.
+        </p>
+        <p>
+          That has taught me that the hardest problems in technology usually aren’t purely
+          technical. They’re human.
+        </p>
+        <p>
+          My talks explore how we navigate that complexity, how AI is changing what it means
+          to build software, and why understanding people becomes even more important as
+          technology becomes easier to create.
+        </p>
+      </section>
+
+      <section class="topics" aria-labelledby="topics-heading">
+        <h2 id="topics-heading">What I Speak About</h2>
+
+        {talks.map((talk) => (
+          <article class="talk">
+            <h3>
+              <a href={`${base}speaking/${talk.slug}`}>{talk.title}</a>
+            </h3>
+            <p class="talk-lede">{talk.lede}</p>
+            {talk.body.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </article>
         ))}
-      </ul>
-      <p>
-        Interested in having me speak?
-        <a href={`${base}contact`}>Get in touch</a>.
-      </p>
+      </section>
+
+      <section class="bio" id="speaker-bio" aria-labelledby="bio-heading">
+        <h2 id="bio-heading">Speaker Bio</h2>
+        <p class="bio-note">This is me trying to write about myself in the third person…</p>
+        <div class="bio-body">
+          <p>
+            Gerardo Ramirez is a technologist, product builder, and educator who believes the
+            best technology starts with understanding people.
+          </p>
+          <p>
+            His career has taken him across software engineering, solutions engineering,
+            product architecture, developer platforms, and education. Along the way, he has
+            worked on everything from enterprise integrations and mobile SDKs to APIs,
+            consumer products, and emerging AI experiences.
+          </p>
+          <p>
+            Much of Gerardo’s work happens in the space between people and technology:
+            translating ideas into systems, helping engineering and product teams understand
+            one another, turning complex technical concepts into something approachable, and
+            finding clarity when the path forward isn’t obvious.
+          </p>
+          <p>
+            That curiosity extends beyond his professional work. Gerardo builds and
+            experiments with his own products, explores new approaches to human-centered
+            product development, and studies how AI is changing the way we design and build
+            software.
+          </p>
+          <p>
+            Before his current work, Gerardo spent several years at Zendrive, helping
+            companies integrate mobile technology while working across engineering, product,
+            and customer teams. Earlier in his career at Ricoh, he worked with globally
+            distributed engineering teams building integrations between enterprise software
+            and document and content-management platforms.
+          </p>
+          <p>
+            Gerardo holds a Master of Science in Software Engineering from California State
+            University, Fullerton and a Bachelor of Science in Computer Science from
+            California State University, East Bay. He has also taught Computer Science at
+            Moreau Catholic High School, an experience that reinforced a belief that
+            continues to shape his work: complicated ideas become far more powerful when we
+            can make them understandable to others.
+          </p>
+          <p>
+            As a speaker, Gerardo brings the perspective of someone who has spent his career
+            moving between engineering, product, customers, classrooms, and his own
+            experiments as a builder.
+          </p>
+        </div>
+      </section>
+
+      <section class="lets-talk" id="lets-talk" aria-labelledby="lets-talk-heading">
+        <h2 id="lets-talk-heading">Let’s Talk</h2>
+        <p>
+          I’m interested in conversations about technology that go beyond the technology
+          itself.
+        </p>
+        <p>
+          If you’re organizing a conference, meetup, podcast, panel, classroom discussion,
+          or team event around product development, engineering, AI, developer experience,
+          or human-centered technology, I’d love to hear what you’re working on.
+        </p>
+        <p class="cta-line">
+          <a href={`${base}contact`} class="btn-primary">Invite me to speak</a>
+        </p>
+      </section>
     </div>
   </main>
   <Footer />
 </Layout>
 
 <style>
-  .page-content { padding: var(--space-lg) 0 var(--space-xl); }
-  .wrapper { animation: fade-rise 0.7s ease both; }
-  .page-header { margin-bottom: var(--space-xl); }
-  .page-header p { color: var(--color-text-muted); max-width: 38em; }
-  .plain-list { list-style: none; margin: 0; padding: 0; margin-bottom: var(--space-xl); }
-  .plain-list > li {
-    margin-bottom: var(--space-lg);
-    padding-bottom: var(--space-md);
+  .page-content {
+    padding: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .speaking {
+    animation: fade-rise 0.7s ease both;
+  }
+
+  .hero {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-xl);
     border-bottom: 1px solid var(--color-border);
   }
-  .list-title {
-    display: inline-block;
-    font-size: 1.35rem;
-    color: var(--color-text);
-    margin-bottom: 0.35rem;
+
+  .hero h1 {
+    margin-bottom: var(--space-sm);
   }
-  .list-title:visited { color: var(--color-text); }
-  .list-title:hover { color: var(--color-accent); }
-  .plain-list p { color: var(--color-text-muted); margin: 0 0 0.35rem; max-width: 40em; }
-  .meta { font-size: 0.875rem; text-transform: capitalize; }
+
+  .hero-lede {
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--color-text);
+    max-width: 22em;
+    margin-bottom: 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-secondary,
+  .cta-line .btn-primary {
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+  }
+
+  .hero-ctas .btn-secondary:visited {
+    color: var(--color-text);
+  }
+
+  .intro,
+  .topics,
+  .bio,
+  .lets-talk {
+    margin-bottom: var(--space-2xl);
+    animation: fade-rise 0.75s ease both;
+  }
+
+  .intro {
+    animation-delay: 0.06s;
+  }
+
+  .topics {
+    animation-delay: 0.1s;
+  }
+
+  .bio {
+    animation-delay: 0.14s;
+    scroll-margin-top: 5rem;
+  }
+
+  .lets-talk {
+    animation-delay: 0.18s;
+    scroll-margin-top: 5rem;
+  }
+
+  .intro p,
+  .talk p,
+  .bio-body p,
+  .lets-talk p {
+    max-width: 40em;
+    margin-bottom: 1rem;
+  }
+
+  .topics h2,
+  .bio h2,
+  .lets-talk h2 {
+    margin-bottom: var(--space-md);
+    font-size: 1.75rem;
+  }
+
+  .talk {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .talk:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .talk h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .talk h3 a {
+    color: var(--color-text);
+  }
+
+  .talk h3 a:visited {
+    color: var(--color-text);
+  }
+
+  .talk h3 a:hover {
+    color: var(--color-accent);
+  }
+
+  .talk-lede {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .bio-note {
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: var(--space-md);
+    max-width: 40em;
+  }
+
+  .cta-line {
+    margin-top: var(--space-md);
+  }
+
+  @media (max-width: 800px) {
+    .hero-lede {
+      font-size: 1.25rem;
+    }
+
+    .topics h2,
+    .bio h2,
+    .lets-talk h2 {
+      font-size: 1.5rem;
+    }
+
+    .talk h3 {
+      font-size: 1.3rem;
+    }
+  }
 </style>
