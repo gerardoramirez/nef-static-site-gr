@@ -1,48 +1,58 @@
-# No Esta Facil
+# No Está Fácil — Personal Site
 
-```sh
-npm create astro@latest -- --template basics
-```
+The source code for [gerardoramirez.info](https://gerardoramirez.info) — a personal portfolio and writing space built with [Astro](https://astro.build).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## About
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This site is home to my work, writing, speaking engagements, and explorations across software engineering, AI engineering, security, and product building. The name *No Está Fácil* is a nod to the honest reality of building things: it's never as easy as it looks.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Tech Stack
 
-## 🚀 Project Structure
+- **Framework:** [Astro](https://astro.build) — static site generator with content collections
+- **Language:** TypeScript
+- **Hosting:** Static deployment at [gerardoramirez.info](https://gerardoramirez.info)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── public/               # Static assets (images, fonts, favicons)
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── assets/           # Processed assets
+│   ├── components/       # Reusable Astro components
+│   ├── content/          # Markdown content collections
+│   │   ├── ai-engineering/
+│   │   ├── security/
+│   │   ├── speaking/
+│   │   ├── work/
+│   │   ├── writing/
+│   │   └── ...
+│   ├── layouts/          # Page layout templates
+│   └── pages/            # Route-based pages
+├── astro.config.mjs
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Local Development
 
-## 🧞 Commands
+```sh
+# Install dependencies
+npm install
 
-All commands are run from the root of the project, from a terminal:
+# Start dev server at localhost:4321
+npm run dev
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Build for production
+npm run build
 
-## 👀 Want to learn more?
+# Preview production build locally
+npm run preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Content
+
+Content is managed as Markdown files inside `src/content/`, organized by topic. The schema for each collection is defined in `src/content/config.ts`.
+
+## License
+
+The code in this repository is open source. Site content (writing, talks, case studies) is © Gerardo Ramirez — all rights reserved.
