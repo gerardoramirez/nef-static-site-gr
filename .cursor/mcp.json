@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "nef-site-knowledge": {
+    "site-knowledge": {
       "command": "node",
       "args": ["mcp-server/dist/index.js"]
     }

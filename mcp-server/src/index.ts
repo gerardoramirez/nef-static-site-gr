@@ -9,7 +9,7 @@ import {
 } from './content.js';
 
 const mcpServer = new McpServer({
-  name: 'nef-site-knowledge',
+  name: 'site-knowledge',
   version: '1.0.0',
 }, {
   capabilities: {
@@ -18,15 +18,15 @@ const mcpServer = new McpServer({
   },
 });
 
-// Register resource template for site content (site://nef/security/introduction, etc.)
+// Register resource template for site content (site://content/security/introduction, etc.)
 mcpServer.registerResource(
   'site-content',
-  new ResourceTemplate('site://nef/{+path}', {
+  new ResourceTemplate('site://content/{+path}', {
     list: async () => {
       const entries = getAllContent();
       return {
         resources: entries.map((e) => ({
-          uri: `site://nef/${e.path}`,
+          uri: `site://content/${e.path}`,
           name: e.title,
           description: `${e.collection}: ${e.title}`,
           mimeType: 'text/markdown',
@@ -35,8 +35,8 @@ mcpServer.registerResource(
     },
   }),
   {
-    title: 'NEF Site Content',
-    description: 'Knowledge from the personal site (security, AI engineering, software engineering)',
+    title: 'Site Content',
+    description: 'Knowledge from gerardoramirez.info (security, AI engineering, software engineering)',
     mimeType: 'text/markdown',
   },
   async (uri, variables) => {
@@ -44,7 +44,7 @@ mcpServer.registerResource(
     const path = typeof pathRaw === 'string' ? pathRaw : Array.isArray(pathRaw) ? pathRaw[0] : '';
     const entry = getContentByPath(path);
     if (!entry) {
-      throw new Error(`Resource not found: site://nef/${path}`);
+      throw new Error(`Resource not found: site://content/${path}`);
     }
     return {
       contents: [
@@ -81,7 +81,7 @@ mcpServer.registerTool(
     }
     const snippets = results.slice(0, 10).map((e) => {
       const preview = e.content.length > 500 ? e.content.slice(0, 500) + '...' : e.content;
-      return `## ${e.title} (site://nef/${e.path})\n${preview}`;
+      return `## ${e.title} (site://content/${e.path})\n${preview}`;
     });
     return {
       content: [
