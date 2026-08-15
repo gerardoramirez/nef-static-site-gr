@@ -1,10 +1,10 @@
-# NEF Site Knowledge MCP Server
+# Site Knowledge MCP Server
 
-MCP server that exposes this Astro site's content (Security mTLS course, AI Engineering, Software Engineering) as Resources and Tools for use with Cursor, Claude Desktop, or other MCP clients.
+MCP server that exposes this Astro site's content as Resources and Tools for use with Cursor, Claude Desktop, or other MCP clients.
 
 ## Features
 
-- **Resources**: Each markdown page is available as `site://nef/{path}` (e.g. `site://nef/security/introduction`, `site://nef/ai-engineering/prompt-engineering`)
+- **Resources**: Each markdown page is available as `site://content/{path}` (e.g. `site://content/security/introduction`, `site://content/ai-engineering/prompt-engineering`)
 - **Tool**: `search_site` – substring search across all content
 
 ## Setup

@@ -1,10 +1,10 @@
-# No Está Fácil — Personal Site
+# gerardoramirez.info
 
-The source code for [gerardoramirez.info](https://gerardoramirez.info) — a personal portfolio and writing space built with [Astro](https://astro.build).
+The source code for [gerardoramirez.info](https://gerardoramirez.info) — a personal site built with [Astro](https://astro.build).
 
 ## About
 
-This site is home to my work, writing, speaking engagements, and explorations across software engineering, AI engineering, security, and product building. The name *No Está Fácil* is a nod to the honest reality of building things: it's never as easy as it looks.
+This site collects selected works, products, writing, and talks at the intersection of human needs, product thinking, and technology. From enterprise integrations and applied AI to security and independent experiments, it explores how we turn complicated problems into software people can understand, trust, and use to perform, remember, and connect.
 
 ## Tech Stack
 
@@ -16,19 +16,21 @@ This site is home to my work, writing, speaking engagements, and explorations ac
 
 ```text
 /
-├── public/               # Static assets (images, fonts, favicons)
+├── public/               # Static assets (favicon, logo, CNAME)
 ├── src/
-│   ├── assets/           # Processed assets
 │   ├── components/       # Reusable Astro components
 │   ├── content/          # Markdown content collections
+│   │   ├── work/
+│   │   ├── products/
+│   │   ├── writing/
+│   │   ├── speaking/
 │   │   ├── ai-engineering/
 │   │   ├── security/
-│   │   ├── speaking/
-│   │   ├── work/
-│   │   ├── writing/
-│   │   └── ...
+│   │   ├── software-engineering/
+│   │   └── enterprise/
 │   ├── layouts/          # Page layout templates
 │   └── pages/            # Route-based pages
+├── mcp-server/           # MCP server that exposes site content
 ├── astro.config.mjs
 └── package.json
 ```

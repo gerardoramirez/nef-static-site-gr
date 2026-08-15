@@ -72,7 +72,7 @@ export function getAllContent(): ContentEntry[] {
 export function getContentByPath(path: string): ContentEntry | null {
   const entries = getAllContent();
   const normalized = path
-    .replace(/^site:\/\/nef\//, '')
+    .replace(/^site:\/\/content\//, '')
     .replace(/^\//, '')
     .trim();
   return entries.find((e) => e.path === normalized || e.path.endsWith('/' + normalized)) ?? null;
