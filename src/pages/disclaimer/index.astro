@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout
+  title="Disclaimer | Gerardo Ramirez"
+  description="Disclaimer for information provided on gerardoramirez.info."
+  canonical={`${base}disclaimer`}
+>
+  <Navigation />
+
+  <main class="page-content" aria-label="Content">
+    <article class="wrapper post">
+      <header class="post-header">
+        <h1 class="post-title">Disclaimer</h1>
+      </header>
+
+      <div class="post-content">
+        <p>
+          The information provided on gerardoramirez.info is for informational and educational
+          purposes only and does not constitute professional advice. Content on this site is not
+          intended to replace the advice of a licensed professional.
+        </p>
+
+        <p>
+          While every effort is made to ensure the information on this site is accurate and up to
+          date, no representations or warranties of any kind, express or implied, are made about
+          the completeness, accuracy, reliability, suitability, or availability of the site or the
+          information, products, or services contained on it for any purpose. Any reliance you
+          place on such information is therefore strictly at your own risk.
+        </p>
+
+        <p>
+          In no event will gerardoramirez.info be liable for any loss or damage, including without
+          limitation indirect or consequential loss or damage, or any loss or damage arising from
+          loss of data or profits, arising out of or in connection with the use of this site.
+        </p>
+
+        <p>
+          Through this site, you may find links to websites not controlled by gerardoramirez.info.
+          There is no control over the nature, content, or availability of those sites. The
+          inclusion of any link does not necessarily imply a recommendation or endorsement of the
+          views expressed within it.
+        </p>
+
+        <p>
+          All content on this site is the property of Gerardo Ramirez and may not be copied,
+          republished, or reused in any form without prior written permission.
+        </p>
+
+        <p>
+          By using this site, you acknowledge that you have read and understood this disclaimer and
+          agree to be bound by its terms. If you do not agree with any part of this disclaimer,
+          please do not use the site.
+        </p>
+
+        <p>
+          This disclaimer may be updated at any time, and any changes will be posted on this page.
+          Continued use of the site following the posting of changes constitutes acceptance of
+          those changes.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-content {
+    padding: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .post {
+    animation: fade-rise 0.7s ease both;
+  }
+
+  .post-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .post-title {
+    margin-bottom: 0;
+  }
+
+  .post-content {
+    animation: fade-rise 0.75s ease 0.08s both;
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1rem;
+    max-width: 40em;
+  }
+</style>
