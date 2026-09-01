@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('neat-things'))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => {
+    const dateA = a.data.date || new Date(0);
+    const dateB = b.data.date || new Date(0);
+    return dateB.getTime() - dateA.getTime();
+  });
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+---
+
+<Layout
+  title="Neat things | Gerardo Ramirez"
+  description="Small finds, certificates, and other curiosities worth keeping."
+  canonical={`${base}neat-things`}
+>
+  <Navigation />
+  <main class="page-content">
+    <div class="wrapper">
+      <header class="page-header">
+        <h1>Neat things</h1>
+        <p>
+          A quiet shelf for small finds that don’t belong with work or products — certificates,
+          programs, and other curiosities worth keeping.
+        </p>
+      </header>
+      <ul class="card-grid">
+        {items.map((item) => (
+          <li>
+            <a href={`${base}neat-things/${item.slug}`} class="card">
+              {item.data.image && (
+                <img
+                  src={item.data.image}
+                  alt={item.data.imageAlt || item.data.title}
+                  class="card-image"
+                />
+              )}
+              <div class="card-body">
+                <h2 class="card-title">{item.data.title}</h2>
+                {item.data.description && <p>{item.data.description}</p>}
+                {item.data.date && (
+                  <p class="meta">
+                    {new Date(item.data.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </p>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-content { padding: var(--space-lg) 0 var(--space-xl); }
+  .wrapper { animation: fade-rise 0.7s ease both; }
+  .page-header { margin-bottom: var(--space-xl); }
+  .page-header p { color: var(--color-text-muted); max-width: 38em; }
+
+  .card-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:visited {
+    color: inherit;
+  }
+
+  .card:hover {
+    text-decoration: none;
+    border-color: var(--color-border-light);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+    background: #fff;
+  }
+
+  .card-body {
+    padding: var(--space-md);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+    color: var(--color-text);
+  }
+
+  .card:hover .card-title {
+    color: var(--color-accent);
+  }
+
+  .card-body p {
+    color: var(--color-text-muted);
+    margin: 0 0 0.35rem;
+    max-width: 40em;
+  }
+
+  .meta {
+    font-size: 0.875rem;
+  }
+</style>
