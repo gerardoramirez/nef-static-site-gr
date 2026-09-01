@@ -25,6 +25,13 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
           </li>
         </ul>
       </div>
+      <div class="footer-col footer-col-links">
+        <ul class="contact-list">
+          <li>
+            <a href={`${base}neat-things`}>Neat things</a>
+          </li>
+        </ul>
+      </div>
       <div class="footer-col footer-col-2">
         <p>
           I transform complex technical and human problems into practical software experiences.
@@ -46,7 +53,7 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
   .footer-col-wrapper {
     display: grid;
-    grid-template-columns: 0.8fr 1.4fr;
+    grid-template-columns: 0.7fr 0.7fr 1.4fr;
     gap: var(--space-lg);
     font-size: 0.9375rem;
     color: var(--color-text-muted);
