@@ -32,7 +32,7 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
         <p class="kicker"><a href={`${base}neat-things`}>Neat things</a></p>
         <h1>{item.data.title}</h1>
         {item.data.description && <p class="article-description">{item.data.description}</p>}
-        <Metadata date={item.data.date} tags={item.data.tags} />
+        <Metadata date={item.data.date} />
       </header>
 
       {item.data.image && (
