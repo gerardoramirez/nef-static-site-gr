@@ -4,7 +4,7 @@ The source code for [gerardoramirez.info](https://gerardoramirez.info) — a per
 
 ## About
 
-This site collects selected works, products, writing, and talks at the intersection of human needs, product thinking, and technology. From enterprise integrations and applied AI to security and independent experiments, it explores how we turn complicated problems into software people can understand, trust, and use to perform, remember, and connect.
+This site collects selected works, products, writing, and talks at the intersection of human needs, product thinking, and technology. From enterprise integrations and applied AI to security and independent experiments, it explores how we turn complicated problems into software people can understand, trust, and use to perform, remember, and connect. added hddy
 
 ## Tech Stack
 
