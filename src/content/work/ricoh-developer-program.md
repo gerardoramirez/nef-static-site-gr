@@ -11,7 +11,7 @@ tags: [developer-experience, sdk, integrations, education, leadership]
 
 Over nearly 14 years at Ricoh, I grew from software engineering into technical leadership focused on developer success. From August 2012 to May 2021, as Senior Principal Software Engineer and Developer Program Technical Lead, I managed an international engineering team in Japan and supported internal and external teams building embedded applications.
 
-I led a community initiative to design embedded connectors for Alfresco, DocumentMall, and SharePoint; released Java and JavaScript SDKs with sample code; and designed and delivered onsite and virtual developer training.
+I led a community initiative to design embedded connectors for Alfresco, DocumentMall, and SharePoint; managed SDKs for projectors, smart boards, printers, and multifunction printers; released Java and JavaScript SDKs with sample code; and designed and delivered onsite and virtual developer training.
 
 ## Improving the developer experience
 
