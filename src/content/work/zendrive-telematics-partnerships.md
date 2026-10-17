@@ -9,7 +9,7 @@ tags: [telematics, mobile, apis, product, leadership]
 
 ## Making the platform usable for partners
 
-At Zendrive, I translated customer goals into actionable technical solutions and advocated for customer needs. I directed requirements development for the mobile SDK and REST APIs, helping turn platform capabilities into tools partners could build with.
+From May 2021 to July 2024, I translated customer goals into actionable technical solutions and advocated for customer needs at Zendrive. I directed requirements development for the mobile SDK and REST APIs, helping turn platform capabilities into tools partners could build with.
 
 ## Bringing product and engineering together
 

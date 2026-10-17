@@ -9,7 +9,7 @@ tags: [fintech, integrations, partnerships]
 
 ## Turning complexity into a clearer path
 
-At Credit Karma, I partnered with financial institutions to accelerate adoption of the offers platform. I translated complex technical requirements into straightforward integration solutions for banks, lenders, and fintech platforms.
+From July 2024 to July 2026, I partnered with financial institutions to accelerate adoption of Credit Karma’s offers platform. I translated complex technical requirements into straightforward integration solutions for banks, lenders, and fintech platforms.
 
 ## Cutting integration time in half
 

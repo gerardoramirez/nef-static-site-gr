@@ -9,7 +9,7 @@ tags: [fintech, integrations, operations, partnerships]
 
 ## Growing a marketplace through partnerships
 
-As a Staff Operations Engineer, I work with banks, lenders, and fintech platforms on integrations for Credit Karma’s shopping experiences marketplace, now a $100M+ business.
+Since July 2026, I’ve worked as a Staff Operations Engineer with banks, lenders, and fintech platforms on integrations for Credit Karma’s shopping experiences marketplace, now a $100M+ business.
 
 I helped lead cross-functional efforts to transform partner onboarding. The volume of onboardings completed doubled compared with the platform’s entire prior history.
 
