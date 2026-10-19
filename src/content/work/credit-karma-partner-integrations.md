@@ -1,6 +1,6 @@
 ---
 title: Making financial partner integrations faster
-description: Simplifying integration work to help banks, lenders, and fintechs adopt Credit Karma’s offers platform.
+description: Simplifying integration work so banks, lenders, and fintechs could launch on an offers platform in less time.
 role: Senior Solutions Engineer · Credit Karma
 date: 2024-07-01
 status: shipped

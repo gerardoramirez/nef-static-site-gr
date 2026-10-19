@@ -1,6 +1,6 @@
 ---
-title: Scaling partner onboarding at Intuit
-description: Helping a financial marketplace grow by making partner onboarding work at scale.
+title: Scaling partner onboarding for a financial marketplace
+description: Rebuilding how partners join a marketplace so it could grow without onboarding becoming the bottleneck.
 role: Staff Operations Engineer · Intuit
 date: 2026-07-01
 status: in-progress
