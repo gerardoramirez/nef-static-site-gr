@@ -24,7 +24,6 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
 <Layout
   title="Gerardo Ramirez"
-  description="Senior solutions engineer, software architect, and product builder. Transforming complex technical and human problems into practical software experiences."
   canonical={`${base}`}
 >
   <Navigation />
@@ -39,31 +38,32 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
       <div class="intro-body">
         <p>
-          I’m a Staff Operations Engineer at Intuit, where I help banks, lenders, and fintech
-          partners connect to Credit Karma’s shopping experiences marketplace, serving 40 million
-          monthly active users. Recent work
-          helped scale the marketplace into a $100M+ business and doubled partner onboardings
-          beyond the platform’s entire prior history.
+          For more than 15 years, I've worked where technology meets the people who
+          depend on it — turning complex requirements into integration paths that teams
+          can deliver and developers actually want to use.
         </p>
         <p>
-          For more than 15 years, I’ve turned complex technical requirements into integration
-          paths teams can deliver and developers can use. My experience spans mobile SDKs,
-          REST APIs, cloud platforms, and full-stack systems—from enterprise hardware SDKs for
-          projectors, smart boards, printers, and multifunction printers to telematics and
-          financial technology.
+          That work has taken me across mobile SDKs, REST APIs, cloud platforms, and
+          full-stack systems, in industries from enterprise hardware to telematics to
+          financial technology. Along the way I've led engineering teams across three
+          continents, built developer programs and technical education, partnered with
+          product on long-term roadmaps, and mentored the people around me.
         </p>
         <p>
-          I’ve led offshore engineering teams in Japan, Europe, and India, built developer
-          programs and technical education, partnered with product on long-term roadmaps, and
-          mentored teammates. I believe technology should enable business relationships, not
-          complicate them—and that the best solutions start with understanding people.
+          I believe technology should strengthen relationships, not complicate them,
+          and that the best solutions start with understanding people. Lately I've been
+          exploring how AI agents change the way we build, and you'll see that throughout
+          my writing and products.
         </p>
         <p>
-          Explore my <a href={`${base}work`}>work</a>,
-          <a href={`${base}products`}>products</a>,
-          and <a href={`${base}writing`}>writing</a>, or
-          <a href={`${base}contact`}> get in touch</a>.
+          Start with my <a href={`${base}work`}>work</a>, see what I'm <a href={`${base}products`}>building</a>, or read
+          what I'm <a href={`${base}writing`}>thinking about</a>. For the full story (roles, companies, and
+          timeline), find me on <a href="https://www.linkedin.com/in/gerardo-ramirez-09/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
         </p>
+        <div class="intro-buttons">
+          <a href={`${base}work`} class="btn btn-primary">Explore my work</a>
+          <a href="https://www.linkedin.com/in/gerardo-ramirez-09/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View my LinkedIn</a>
+        </div>
       </div>
 
       {featuredWork.length > 0 && (
@@ -161,6 +161,17 @@ const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
   .intro-body p {
     margin-bottom: 1rem;
     max-width: 40em;
+  }
+
+  .intro-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .intro-buttons .btn {
+    text-decoration: none;
   }
 
   .list-section {
