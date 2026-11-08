@@ -1,6 +1,6 @@
 # gerardoramirez.info
 
-The source code for [gerardoramirez.info](https://gerardoramirez.info) — a personal site built with [Astro](https://astro.build).
+The source code for [gerardoramirez.info](https://gerardoramirez.info) — a personal site built with [Astro](https://astro.build). build
 
 ## About
 
