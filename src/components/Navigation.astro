@@ -58,25 +58,24 @@ const links = [
 <style>
   .site-header {
     border-bottom: 1px solid var(--color-border);
-    min-height: 56px;
+    min-height: 72px;
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(253, 253, 253, 0.92);
-    backdrop-filter: blur(8px);
+    background: var(--color-background);
   }
 
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 56px;
+    min-height: 72px;
   }
 
   .site-title {
-    font-size: 1.625rem;
-    font-weight: 400;
-    line-height: 54px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
     color: var(--color-secondary);
     text-decoration: none;
     letter-spacing: -0.02em;
@@ -89,7 +88,7 @@ const links = [
   }
 
   .site-nav {
-    line-height: 54px;
+    line-height: 1.5;
   }
 
   .nav-trigger {
@@ -103,13 +102,13 @@ const links = [
   .trigger {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.75rem;
   }
 
   .page-link {
     color: var(--color-text);
     line-height: 1.5;
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
 
   .page-link:visited {
@@ -138,7 +137,7 @@ const links = [
   @media screen and (max-width: 600px) {
     .site-nav {
       position: absolute;
-      top: 9px;
+      top: 18px;
       right: 15px;
       background-color: var(--color-background);
       border: 1px solid var(--color-border);
